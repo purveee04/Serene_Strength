@@ -1,0 +1,331 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+
+/* Navigation Bar Styles */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #222;  /* Dark background for contrast */
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s, background 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background: #ffcc00; /* Highlight effect on hover */
+    color: black;
+}
+
+/* Mobile Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: linear-gradient(to right, #84845e, #e49630);
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder bold;
+
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+header h1 {
+    .heading {
+        font-family: 'Didot', serif; 
+       display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold bold;
+      }
+      .cult {
+        font-weight: bold;
+        color: white;
+        font-size: 40px;
+    }
+    } 
+
+.fitness-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('fitness-silhouettes.png') repeat-x;
+    background-size: contain;
+    animation: move-bg 10s linear infinite;
+    opacity: 0.09;
+}
+
+@keyframes move-bg {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
+}
+
+/* Workout Categories */
+.workout-categories {
+    padding: 50px;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: #c67f93;
+    margin-bottom: 15px;
+}
+
+/* Workout Cards */
+.workout-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h4 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    background: #b55e5272;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.card a:hover {
+    background: #e03e1d;
+}
+
+
+.workout-plans {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(to right, #8ebccc, #b86fdf); /* Smooth gradient */
+    color: white; /* Text color for better contrast */
+    border-radius: 10px; /* Soft rounded corners */
+}
+
+.workout-plans h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.workout-levels {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.workout-card {
+    background: rgba(255, 255, 255, 0.2); /* Transparent white overlay */
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.workout-card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .workout-levels {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.track-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #222, #444); /* Dark-themed gradient */
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.arm-image {
+    width: 150px; /* Adjust size */
+    height: auto;
+}
+
+.progress-content {
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.progress-tracker {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .track-progress {
+        flex-direction: column;
+    }
+    .arm-image {
+        width: 100px; /* Reduce size for smaller screens */
+        margin: 10px 0;
+    }
+}
+
+
+
+
+/* FAQ Section */
+.faq-section {
+    background: white;
+}
+
+.faq {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    padding: 15px;
+    border-left: 5px solid #f09b46;
+    background: #f9f9f9;
+}
+.faq {
+    padding: 50px 20px;
+    background: white;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    background: #dcb89d;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.faq-item h3 {
+    margin: 0;
+    color: #333;
+}
+
+.faq-item p {
+    margin-top: 5px;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trainer & Nutritionist Profile</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f5f0e6; /* beige background */
+      color: #3b2f2f; /* dark brown text */
+    }
+
+    header {
+      background-color: #d2b48c; /* light brown */
+      color: #3b2f2f;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .profile-container {
+      max-width: 900px;
+      background-color: #fffaf3;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(139, 69, 19, 0.2);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      border-bottom: 2px solid #d2b48c;
+      padding-bottom: 1rem;
+    }
+
+    .profile-header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #8b4513;
+    }
+
+    .contact-info a {
+      color: #8b4513;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      border-left: 6px solid #8b4513;
+      padding-left: 10px;
+      color: #3b2f2f;
+    }
+
+    .experience-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .experience-item {
+      background-color: #fdf5e6;
+      border-left: 4px solid #8b4513;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .review-card {
+      background-color: #fdf5e6;
+      border: 1px solid #d2b48c;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(139, 69, 19, 0.15);
+    }
+
+    .review-card h4 {
+      margin: 0 0 0.5rem 0;
+      color: #8b4513;
+    }
+
+    .review-card p {
+      font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .cta-buttons button {
+      background-color: #8b4513;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-buttons button:hover {
+      background-color: #a0522d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #d2b48c;
+      color: #3b2f2f;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trainer & Nutritionist Profile</h1>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <img src="trainer1.jpg" alt="Profile Picture">
+      <div>
+        <h2>Tanvir Hasan</h2>
+        <p>Certified Fitness Trainer & Nutrition Expert</p>
+        <div class="contact-info">
+          <a href="mailto:tanvirhasan@email.com">📧 tanvirhasan@email.com</a>
+          <a href="tel:+919876543210">📞 +91 98765 4310</a>
+          <a href="#">🔗 LinkedIn</a>
+          <a href="#">📸 Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>About</h2>
+      <p>Tanvir Hasan is a passionate trainer with over 7 years of experience in fitness coaching, personalized nutrition, and holistic health improvement. He’s dedicated to helping individuals achieve their wellness goals sustainably.</p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <ul class="experience-list">
+        <li class="experience-item"><strong>Gold’s Gym (2018–2023):</strong> Lead fitness coach specializing in strength training and endurance programs.</li>
+        <li class="experience-item"><strong>NutritionPro (2016–2018):</strong> Created personalized diet plans for 100+ clients focusing on balanced macros.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <h4>⭐️⭐️⭐️⭐️⭐️ — Aditi Sharma</h4>
+          <p>Tanvir’s sessions completely transformed my fitness journey! His customized plans made all the difference.</p>
+        </div>
+        <div class="review-card">
+          <h4>⭐️⭐️⭐️⭐️ — Rahul Verma</h4>
+          <p>Very knowledgeable and motivating. The nutrition tips helped me achieve visible results within weeks.</p>
+        </div>
+        <div class="review-card">
+          <h4>⭐️⭐️⭐️⭐️⭐️ — Neha Patel</h4>
+          <p>Highly professional and friendly. Tanvir guided me through each step and made workouts enjoyable.</p>
+        </div>
+        <div class="review-card">
+          <h4>⭐️⭐️⭐️⭐️⭐️ — Arjun Mehta</h4>
+          <p>Great experience! His personalized meal plans and follow-up sessions kept me consistent and motivated.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-buttons">
+      <button>Book a Session</button>
+      <button>Message Now</button>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Serene Strength — Your fitness and wellness partner
+  </footer>
+</body>
+</html>

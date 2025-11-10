@@ -1,0 +1,208 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+
+
+/* Navigation Bar Styles */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #222;  /* Dark background for contrast */
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s, background 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background: #ffcc00; /* Highlight effect on hover */
+    color: black;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(to right, #736194, #2a7888);
+    color: white;
+}
+/* Motivational Box */
+.motivation-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #887f62, #c75283);
+    padding: 40px;
+    text-align: center;
+}
+
+
+/* Nutrition Section */
+.nutrition {
+    text-align: center;
+    padding: 40px;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    text-align: center;
+}
+/* Nutritional Advice Section */
+.nutrition-advice {
+    text-align: center;
+    padding: 30px;
+    background: #f3dbed;
+    margin: 40px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nutrition-advice h3 {
+    color: #03010e;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nutrition-advice p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Video Styling */
+.video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.video-container iframe {
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    height: 315px;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Meal Plans */
+.meal-plans {
+    background: #ffcc00;
+    padding: 40px;
+    text-align: center;
+}
+
+.plans {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.plan {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+/* FAQ */
+/* FAQ Section */
+.faq-section {
+    background: white;
+}
+
+.faq {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    padding: 15px;
+    border-left: 5px solid #0073e6;
+    background: #f9f9f9;
+}
+
+/* Motivational Box */
+.motivation-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #ffcc00, #ff6600);
+    padding: 40px;
+    text-align: center;
+}
+
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}

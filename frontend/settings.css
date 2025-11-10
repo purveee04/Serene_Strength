@@ -1,0 +1,408 @@
+
+body {
+    /* Apply the new background image to the body */
+    background: url('settingsbg.png') no-repeat center center fixed;
+    background-size: cover; 
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    color: #333;
+}
+
+#settings-page {
+    max-width: 750px; /* Optimal width for a settings page */
+    margin: 100px auto 50px auto; 
+    padding: 20px;
+    /* Remove background from here, as body handles it */
+}
+
+.settings-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #3d1f00; /* Dark brown/gold from your theme */
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+}
+
+.settings-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    
+}
+
+/* --- Back Button --- */
+.back-btn {
+    position: absolute;
+    top: 80px; 
+    left: 20px;
+    color: #4F5B66;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly translucent for readability */
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+    color: #3d1f00;
+}
+
+
+/* --- Profile Overview (Top Section) --- */
+.profile-overview {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-pic-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #8aa577; /* Subtle green ring */
+}
+
+.edit-pic-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #3d1f00;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.edit-pic-btn:hover {
+    background: #ff5500; /* Offer section hover color */
+}
+
+.edit-profile-link {
+    color: #4F5B66;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.edit-profile-link:hover {
+    color: #8aa577;
+}
+
+/* --- Section Styling --- */
+.settings-section {
+    
+    background: #ffffff; /* Explicitly white for internal sections, just in case */
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.section-heading {
+    font-size: 1.4rem;
+    color: #4F5B66; 
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f4f4f4;
+    font-weight: 600;
+}
+
+/* --- Input Items --- */
+.setting-item {
+    margin-bottom: 20px;
+}
+
+.setting-item label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.setting-item input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.setting-item input:focus {
+    border-color: #8aa577; 
+    outline: none;
+}
+
+.password-group {
+    display: flex;
+    gap: 10px;
+}
+
+.password-group input {
+    flex-grow: 1;
+}
+
+/* --- Toggle Switch (Copied from previous successful style, slightly cleaner) --- */
+.setting-toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px dotted #eee;
+}
+.setting-toggle-item:last-child {
+    border-bottom: none;
+}
+
+.toggle-control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch label {
+    cursor: pointer;
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    border-radius: 50px;
+}
+
+.toggle-switch label:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3.5px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+input:checked + label {
+    background-color: #8aa577; /* Green for "on" state */
+}
+
+input:checked + label:before {
+    transform: translateX(18px);
+}
+
+.status-label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* --- Integration & Icon Styles --- */
+.setting-integration {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    /* IMPORTANT: The current HTML structure has multiple inner elements here, so 
+       the flex properties will apply to all of them. */
+}
+
+.integration-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.spotify-icon {
+    font-size: 1.8rem;
+    color: #1DB954; 
+}
+
+
+.settings-section .setting-integration .integration-details:nth-of-type(2) i.fab.fa-youtube {
+    font-size: 1.8rem; 
+    color: #FF0000 !important;
+}
+
+.settings-section .setting-integration a.action-btn-connect:nth-of-type(2) {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+}
+.settings-section .setting-integration a.action-btn-connect:nth-of-type(2):hover {
+    background-color: #CC0000;
+}
+/* ---------------------------------------------------- */
+
+
+
+/* --- Subscription Section --- */
+.subscription-section {
+    background: #f8f8f8; /* Slightly different background to highlight the plan */
+    border: 1px solid #eee;
+}
+
+.subscription-status {
+    margin-bottom: 20px;
+}
+
+.status-label-current {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3d1f00;
+}
+.status-label-current span {
+    color: #8aa577;
+    font-weight: 700;
+}
+
+.next-bill {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.subscription-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Privacy Link --- */
+.policy-item {
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+.policy-link {
+    color: #4285f4;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+.policy-link:hover {
+    text-decoration: underline;
+    color: #357ae8;
+}
+
+/* --- Button Styles (Refined) --- */
+.save-btn, .action-btn-primary, .action-btn-secondary, .action-btn-tertiary, .action-btn-connect, .delete-btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.save-btn {
+    background-color: #3d1f00;
+    color: white;
+    border: none;
+    width: 100%;
+    margin-top: 15px;
+}
+.save-btn:hover {
+    background-color: #663300;
+}
+
+.action-btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    width: 150px;
+}
+.action-btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.action-btn-primary {
+    background-color: #8aa577; /* Green accent for upgrade/change */
+    color: white;
+    border: none;
+}
+.action-btn-primary:hover {
+    background-color: #728d5a;
+}
+
+.action-btn-tertiary {
+    background: none;
+    color: #4F5B66;
+    border: 1px solid #ddd;
+}
+.action-btn-tertiary:hover {
+    background-color: #f0f0f0;
+    border-color: #c0c0c0;
+}
+
+.action-btn-connect {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+}
+.action-btn-connect:hover {
+    background-color: #168a3e;
+}
+
+/* --- Delete Account Button (Final Action) --- */
+.delete-section {
+    background: #fffafa; /* Very light red background */
+    border: 1px solid #f9dcdc;
+    text-align: center;
+}
+
+.delete-btn {
+    background-color: #CC0000; 
+    color: white;
+    border: none;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.delete-btn:hover {
+    background-color: #990000;
+}

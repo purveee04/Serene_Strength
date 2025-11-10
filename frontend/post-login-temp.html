@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness & Wellness</title>
+
+
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* container sits over heading area but behind the text */
+      .emoji-fly-wrap {
+        position: absolute;
+        inset: 0;
+        /* top:0; right:0; bottom:0; left:0; */
+        pointer-events: none;
+        /* clicks go through */
+        z-index: 5;
+        /* below heading (heading should have z-index > 5) */
+        overflow: visible;
+      }
+
+      /* base emoji styling */
+      .emoji-fly-wrap .fly {
+        position: absolute;
+        font-size: 26px;
+        /* emoji size (change to 20/30/etc) */
+        opacity: 0.95;
+        transform-origin: center;
+        will-change: transform, opacity;
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
+      }
+
+      /* individual motion starting positions */
+      .fly-1 {
+        left: 8%;
+        top: 18%;
+        animation: flyA 10s ease-in-out infinite;
+      }
+
+      .fly-2 {
+        right: 10%;
+        top: 10%;
+        animation: flyB 12s ease-in-out infinite;
+      }
+
+      .fly-3 {
+        left: 55%;
+        top: 26%;
+        animation: flyC 9s ease-in-out infinite;
+      }
+
+      /* keyframes — gentle, natural motion */
+      @keyframes flyA {
+        0% {
+          transform: translate(-30px, 0) rotate(-5deg) scale(0.95);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        50% {
+          transform: translate(60px, -70px) rotate(15deg) scale(1.05);
+        }
+
+        80% {
+          transform: translate(-40px, -30px) rotate(-10deg) scale(0.95);
+        }
+
+        100% {
+          transform: translate(-30px, 0) rotate(-5deg) scale(0.95);
+          opacity: 0;
+        }
+      }
+
+      @keyframes flyB {
+        0% {
+          transform: translate(40px, 0) rotate(10deg) scale(0.9);
+          opacity: 0;
+        }
+
+        8% {
+          opacity: 1;
+        }
+
+        45% {
+          transform: translate(-80px, -90px) rotate(-20deg) scale(1.1);
+        }
+
+        75% {
+          transform: translate(30px, -40px) rotate(8deg) scale(1.0);
+        }
+
+        100% {
+          transform: translate(40px, 0) rotate(10deg) scale(0.9);
+          opacity: 0;
+        }
+      }
+
+      @keyframes flyC {
+        0% {
+          transform: translate(0, 30px) rotate(3deg) scale(0.95);
+          opacity: 0;
+        }
+
+        12% {
+          opacity: 1;
+        }
+
+        48% {
+          transform: translate(-90px, -50px) rotate(-8deg) scale(1.05);
+        }
+
+        78% {
+          transform: translate(50px, -20px) rotate(6deg) scale(0.98);
+        }
+
+        100% {
+          transform: translate(0, 30px) rotate(3deg) scale(0.95);
+          opacity: 0;
+        }
+      }
+
+      /* ensure heading stays visually above emojis — adjust z-index if needed */
+      #wellness-tracker h2,
+      #wellness-tracker h2::after {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* ---- TRAIN AT HOME SECTION FIX ---- */
+      #train-at-home {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      #train-at-home h2 {
+        font-size: 1.8rem;
+        /* smaller heading */
+        margin-bottom: 0.8rem;
+      }
+
+      #train-at-home p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0.3rem;
+      }
+
+      #train-at-home h3 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      #train-at-home h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        margin-bottom: 0.2rem;
+      }
+
+      #train-at-home .expert-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      #train-at-home .expert img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      #train-at-home .category {
+        background-color: #fffaf0;
+        /* light beige */
+        border-radius: 1rem;
+        padding: 1.2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #train-at-home .expert-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      /* -------- FIX FONT SIZES FOR PRICE, FAQ, AND CONTACT SECTIONS -------- */
+      #price,
+      #faq-section,
+      #contact {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* --- PRICE SECTION --- */
+      #price h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+      }
+
+      #price p,
+      #price span,
+      #price small,
+      #price a {
+        font-size: 0.9rem;
+      }
+
+      #price .pricing-cost {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      #price .pricing-button a {
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: white;
+      }
+
+      /* --- FAQ SECTION --- */
+      #faq-section h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      #faq-section h2 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        color: #444;
+      }
+
+      #faq-section summary {
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      #faq-section .faq-answer {
+        font-size: 0.9rem;
+        margin-top: 0.4rem;
+        color: #555;
+      }
+
+      /* --- CONTACT SECTION --- */
+      #contact h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      #contact h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      #contact p,
+      #contact a,
+      #contact li {
+        font-size: 0.9rem;
+        color: #333;
+        line-height: 1.4;
+      }
+
+      #contact input,
+      #contact textarea {
+        font-size: 0.9rem;
+      }
+
+      /* Make buttons balanced */
+      #contact button,
+      #price .pricing-button {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+      }
+
+      /* 🦋 Butterfly Animation */
+      .butterfly-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        pointer-events: none;
+        overflow: visible;
+        z-index: 10;
+      }
+
+      .butterfly {
+        position: absolute;
+        bottom: 0;
+        left: var(--x);
+        width: 24px;
+        height: 24px;
+        background-image: url('');
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: flyAround 10s linear infinite;
+        animation-delay: var(--delay);
+        opacity: 0.9;
+      }
+
+      @keyframes flyAround {
+        0% {
+          transform: translateY(100%) rotate(0deg);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 1;
+        }
+
+        50% {
+          transform: translateY(-150px) translateX(50px) rotate(30deg);
+        }
+
+        75% {
+          transform: translateY(-80px) translateX(-50px) rotate(-20deg);
+        }
+
+        100% {
+          transform: translateY(100%) rotate(0deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+<body>
+  <header>
+    <h1 class="heading">
+      <span class="cult">Serene Strength</span>
+    </h1>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#train-at-home">Trainers</a></li>
+        <li><a href="#faq-section">FAQ'S</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+        <li class="relative group">
+          <a href="#" class="text-white">
+            <i class="fas fa-user text-white text-lg"></i>
+          </a>
+
+          <ul class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg 
+           opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible 
+           transition-all duration-300 ease-in-out z-50 flex flex-col divide-y divide-gray-100">
+            <li>
+              <a href="profile-backup2.html"
+                class="block px-4 py-4.5 hover:bg-indigo-50 text-gray-700 rounded-t-xl text-5px">
+                👤 View Profile
+              </a>
+            </li>
+            <li>
+              <a href="settings.html" class="block px-4 py-4.5 hover:bg-indigo-50 text-gray-700 text-5px">
+                ⚙️ Settings
+              </a>
+            </li>
+            <li>
+              <a href="termscondition.html" class="block px-4 py-4.5 hover:bg-indigo-50 text-gray-700 text-5px">
+                📝 Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a href="index.html"
+                class="block px-4 py-4.5 hover:bg-red-50 text-red-600 rounded-b-xl text-5px font-medium">
+                🚪 Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+
+
+
+        <li><a href="yourfav.html" title="Favorites"><i class="fas fa-heart"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="home">
+
+    <div class="max-w-6xl mx-auto">
+      <!-- 🌿 Daily Wellness Tracker Section -->
+      <section id="wellness-tracker" class="relative z-10 p-6  rounded-2xl shadow-lg backdrop-blur-sm isolate"
+        style=" background-image: none !important;background-color: #f8f5ee;">
+
+        <h2 class="text-4xl text-center mb-10 relative z-20 inline-block px-3 rounded"
+          style="font-family: 'Dancing Script', cursive; font-weight: 700; color: #2F2F2F; background: #f8f5ee; position: relative;">
+          Today's Goals 📅
+        </h2>
+
+        <div class="butterfly-container">
+          <div class="butterfly" style="--delay: 0s; --x: 0%;">🦋</div>
+          <div class="butterfly" style="--delay: 2s; --x: 30%;">🦋</div>
+          <div class="butterfly" style="--delay: 4s; --x: 60%;">🦋</div>
+        </div>
+
+
+
+        <!-- div class="grid md:grid-cols-2 gap-6"> -->
+        <div class="flex flex-row gap-6 justify-center flex-wrap md:flex-nowrap bG-#FAEDCD">
+
+          <!-- Workout Plan -->
+          <div id="workout-card"
+            class="bg-white rounded-2xl p-5 border-t-4 border-[#a6c3e4] shadow hover:shadow-xl transition-all relative z-20">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+              <h3 class="text-2xl font-semibold text-indigo-500 bg-white inline-block px-2 rounded"
+                style="font-family: 'Poppins', sans-serif; letter-spacing: 0.5px;">
+                Workout Plans 💪
+              </h3>
+              <i data-lucide="dumbbell" class="text-indigo-500 w-6 h-6"></i>
+              <a href="profile-backup2.html"
+                class="text-sm font-medium text-indigo-500 hover:text-white border border-indigo-500 hover:bg-indigo-600 rounded-lg px-3 py-1 transition-all">
+                ✏️ Edit
+              </a>
+            </div>
+
+
+            <div class="space-y-3 task-list max-h-60 overflow-y-auto">
+              <div class="flex items-center bg-indigo-50 p-2 rounded">
+                <input type="checkbox" id="task1" data-section="workout" class="workout-item h-4 w-4 text-indigo-600">
+                <label for="task1" class="ml-3 flex-1 text-gray-700 !font-normal" style="font-size: 15px;">
+                  Warm-up & Stretch
+                </label>
+
+              </div>
+              <div class="flex items-center bg-indigo-50 p-2 rounded">
+                <input type="checkbox" id="task2" data-section="workout" class="workout-item h-4 w-4 text-indigo-600">
+                <label for="task2" class="ml-3 flex-1 text-gray-700 font-normal" style="font-size: 15px;">Cardio (30
+                  min)</label>
+              </div>
+              <div class="flex items-center bg-indigo-50 p-2 rounded">
+                <input type="checkbox" id="task3" data-section="workout" class="workout-item h-4 w-4 text-indigo-600">
+                <label for="task3" class="ml-3 flex-1 text-gray-700 font-normal" style="font-size: 15px;">Meditation (10
+                  min)</label>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <p class="text-sm text-gray-600 mb-1">Progress: <span id="workout-percent"
+                  class="text-indigo-600 font-semibold">0%</span></p>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="workout-bar" class="bg-indigo-500 h-2 rounded-full transition-all duration-300"
+                  style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+          `
+          <!-- Diet Plan -->
+          <div id="diet-card"
+            class="bg-white rounded-2xl p-5 border-t-4 border-[#a6c48a] shadow hover:shadow-xl transition-all relative z-20">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+              <h3 class="text-2xl font-semibold text-[#448813] bg-white inline-block px-2 rounded ml-0">Diet goals 🥗
+              </h3>
+              <i data-lucide="apple" class="text-green-400 w-6 h-6"></i>
+              <a href="profile-backup2.html"
+                class="text-sm font-medium text-[#448813] hover:text-white border border-green-500 hover:bg-indigo-600 rounded-lg px-3 py-1 transition-all">
+                ✏️ Edit
+              </a>
+            </div>
+
+            <div class="space-y-3 task-list max-h-60 overflow-y-auto">
+              <div class="flex items-center bg-green-50 p-2 rounded">
+                <input type="checkbox" id="diet-task1" data-section="diet" class="diet-item h-4 w-4 text-green-600">
+                <label for="diet-task1" class="ml-3 flex-1 text-gray-700" style="font-size: 15px;">Healthy
+                  Breakfast</label>
+              </div>
+              <div class="flex items-center bg-green-50 p-2 rounded">
+                <input type="checkbox" id="diet-task2" data-section="diet" class="diet-item h-4 w-4 text-green-600">
+                <label for="diet-task2" class="ml-3 flex-1 text-gray-700" style="font-size: 15px;">Light Lunch</label>
+              </div>
+              <div class="flex items-center bg-green-50 p-2 rounded">
+                <input type="checkbox" id="diet-task3" data-section="diet" class="diet-item h-4 w-4 text-green-600">
+                <label for="diet-task3" class="ml-3 flex-1 text-gray-700" style="font-size: 15px;">Drink 2L
+                  Water</label>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <p class="text-sm text-gray-600 mb-1">Progress: <span id="diet-percent"
+                  class="text-green-600 font-semibold">0%</span></p>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="diet-bar" class="bg-green-500 h-2 rounded-full transition-all duration-300" style="width:0%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>
+          #wellness-tracker .flex {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center;
+            gap: 1.5rem;
+            /* matches gap-6 */
+            flex-wrap: wrap;
+          }
+
+          #wellness-tracker label {
+            font-weight: 400 !important;
+          }
+
+          #wellness-tracker #workout-card,
+          #wellness-tracker #diet-card {
+            flex: 1 1 350px;
+            max-width: 500px;
+          }
+        </style>
+
+      </section>
+
+
+      <!-- COURSES YOU CAN EXPLORE SECTION -->
+      <section id="courses" style="padding: 60px 0; background-color: #f8f8f8;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+          <h2 style="font-size: 2.3rem; color: #3d1f00; font-weight: 800; margin-bottom: 50px; text-align: center;">
+            Courses You Can Explore
+          </h2>
+
+          <!-- 🌿 Yoga Courses -->
+          <div class="course-section" style="margin-bottom: 60px;">
+            <div class="section-header">
+              <h3 style="font-size: 1.7rem; color: #8aa577;">
+                <i class="fas fa-leaf"></i> Yoga Courses
+              </h3>
+              <a href="yoga-post-login.html" class="view-more-btn" style="--btn-color:#8aa577;">View More →</a>
+            </div>
+            <div class="scroll-container">
+              <div class="course-card" style="--accent:#c5d5a0;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-spa"></i></div>
+                <h4>Morning Flow Yoga</h4>
+                <p>Start your day with calm energy and better posture through this energizing morning yoga session.</p>
+              </div>
+              <div class="course-card" style="--accent:#bcd4a5;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-seedling"></i></div>
+                <h4>Power Vinyasa</h4>
+                <p>Strengthen your core and balance while enhancing flexibility through guided vinyasa flows.</p>
+              </div>
+              <div class="course-card" style="--accent:#a6c48a;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-sun"></i></div>
+                <h4>Restorative Yoga</h4>
+                <p>Relax your mind and body with a soothing flow designed to relieve tension and stress.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 💪 Workout Courses -->
+          <div class="course-section" style="margin-bottom: 60px;">
+            <div class="section-header">
+              <h3 style="font-size: 1.7rem; color: #8db4d1;">
+                <i class="fas fa-dumbbell"></i> Workout Courses
+              </h3>
+              <a href="workout-post-login.html" class="view-more-btn" style="--btn-color:#8db4d1;">View More →</a>
+            </div>
+            <div class="scroll-container">
+              <div class="course-card" style="--accent:#c8ddf0;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-fire-alt"></i></div>
+                <h4>HIIT Blast</h4>
+                <p>Burn calories quickly with high-intensity interval training that boosts strength and endurance.</p>
+              </div>
+              <div class="course-card" style="--accent:#bcdaf5;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-running"></i></div>
+                <h4>Body Sculpt</h4>
+                <p>Tone every muscle with guided resistance workouts focused on balance, strength, and form.</p>
+              </div>
+              <div class="course-card" style="--accent:#a6c3e4;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-bolt"></i></div>
+                <h4>Strength Circuit</h4>
+                <p>Full-body training routines combining weights, mobility, and functional strength exercises.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 🍎 Diet Plans -->
+          <div class="course-section">
+            <div class="section-header">
+              <h3 style="font-size: 1.7rem; color: #c1a074;">
+                <i class="fas fa-apple-alt"></i> Diet Plans
+              </h3>
+              <a href="diet-post-login.html" class="view-more-btn" style="--btn-color:#c1a074;">View More →</a>
+            </div>
+            <div class="scroll-container">
+              <div class="course-card" style="--accent:#f0d9b5;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-carrot"></i></div>
+                <h4>Vegan Carb Balance</h4>
+                <p>A plant-based diet rich in healthy carbs from oats, fruits, and grains for steady energy.</p>
+              </div>
+              <div class="course-card" style="--accent:#f4c99b;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-drumstick-bite"></i></div>
+                <h4>High Protein Meal Plan</h4>
+                <p>Boost muscle recovery with meals featuring lean proteins and balanced macros.</p>
+              </div>
+              <div class="course-card" style="--accent:#f2b880;">
+                <button class="heart-btn"><i class="far fa-heart"></i></button>
+                <div class="course-image"><i class="fas fa-seedling"></i></div>
+                <h4>Detox Smoothie Plan</h4>
+                <p>Cleanse and refresh your body with fruit-based smoothies packed with vitamins and antioxidants.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        /* Section Header */
+        .section-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 0 20px 25px 20px;
+        }
+
+        .scroll-container {
+          display: flex;
+          overflow-x: auto;
+          gap: 25px;
+          justify-content: center;
+          scroll-behavior: smooth;
+          padding-bottom: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+          height: 6px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 3px;
+        }
+
+        .course-card {
+          flex: 0 0 280px;
+          background-color: #fff;
+          border-radius: 14px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          padding: 18px;
+          position: relative;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-image {
+          width: 100%;
+          height: 150px;
+          border-radius: 12px;
+          background-color: var(--accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 2rem;
+          margin-bottom: 15px;
+        }
+
+        .course-card h4 {
+          color: #3d1f00;
+          font-weight: 700;
+          margin-bottom: 10px;
+          text-align: left;
+        }
+
+        .course-card p {
+          color: #555;
+          font-size: 0.9rem;
+          line-height: 1.4;
+          text-align: left;
+        }
+
+        .heart-btn {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: #fff;
+          border: none;
+          border-radius: 50%;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          cursor: pointer;
+          width: 36px;
+          height: 36px;
+          font-size: 1.1rem;
+          color: #aaa;
+          transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .heart-btn:hover {
+          transform: scale(1.1);
+        }
+
+        .heart-btn.active {
+          background: var(--accent);
+          color: white;
+        }
+
+        .heart.filled {
+          transform: scale(1.2);
+          color: red;
+          transition: transform 0.2s ease, color 0.3s;
+        }
+
+        /* View More Button */
+        .view-more-btn {
+          font-size: 1rem;
+          background: var(--btn-color);
+          border: none;
+          padding: 8px 18px;
+          border-radius: 25px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          font-weight: 600;
+          color: #fff;
+          box-shadow: 0 0 10px rgba(0, 31, 0, 0.2);
+        }
+
+        .view-more-btn:hover {
+          background-color: #3d1f00;
+          color: #fff;
+          transform: scale(1.08);
+          box-shadow: 0 0 15px rgba(0, 31, 0, 0.35);
+        }
+      </style>
+
+      <script>
+        // Toggle heart fill on click
+        document.querySelectorAll(".heart-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const icon = btn.querySelector("i");
+            btn.classList.toggle("active");
+            if (icon.classList.contains("far")) {
+              icon.classList.replace("far", "fas");
+            } else {
+              icon.classList.replace("fas", "far");
+            }
+          });
+        });
+      </script>
+
+      <section id="train-at-home" class="py-12 bg-beige-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+            Connect With Your Nearby Trainers !
+          </h2>
+          <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            Have your own personalized personal trainer, nutritionist, and yoga expert — all from the comfort of your
+            home.
+          </p>
+
+          <!-- Expert Categories Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Fitness Trainers -->
+            <div class="category bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all">
+              <h3 class="text-xl font-semibold text-indigo-700 mb-4 text-center">Fitness Trainers</h3>
+              <div class="expert-list space-y-5">
+                <a href="trainer.html" class="block">
+                  <div class="expert text-center cursor-pointer hover:bg-gray-100 transition rounded-lg p-4">
+                    <img src="trainer1.jpg" alt="Trainer 1" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                    <h4 class="text-lg font-medium text-gray-800">Tanvir Hasan</h4>
+                    <p class="text-sm text-gray-500">New Delhi, India</p>
+                    <p class="text-yellow-500 text-sm">⭐⭐⭐⭐</p>
+                  </div>
+                </a>
+
+                <div class="expert text-center">
+                  <img src="trainer2.jpg" alt="Trainer 2" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Mukul Nagpaul</h4>
+                  <p class="text-sm text-gray-500">New Delhi, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="expert text-center">
+                  <img src="trainer3.jpg" alt="Trainer 3" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Jazzy Raima</h4>
+                  <p class="text-sm text-gray-500">Noida, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nutritionists -->
+            <div class="category bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all">
+              <h3 class="text-xl font-semibold text-green-700 mb-4 text-center">Nutritionists</h3>
+              <div class="expert-list space-y-5">
+                <div class="expert text-center">
+                  <img src="nutritionist1.jpg" alt="Nutritionist 1"
+                    class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Tasleem Mohammed</h4>
+                  <p class="text-sm text-gray-500">Noida, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐</p>
+                </div>
+                <div class="expert text-center">
+                  <img src="nutritionist2.jpg" alt="Nutritionist 2"
+                    class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Dr. Raghav Sharma</h4>
+                  <p class="text-sm text-gray-500">New Delhi, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="expert text-center">
+                  <img src="nutritionist3.jpg" alt="Nutritionist 3"
+                    class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Dr. Priya Shukla</h4>
+                  <p class="text-sm text-gray-500">Gurgaon, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Yoga Experts -->
+            <div class="category bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all">
+              <h3 class="text-xl font-semibold text-pink-700 mb-4 text-center">Yoga Experts</h3>
+              <div class="expert-list space-y-5">
+                <div class="expert text-center">
+                  <img src="yoga1.jpg" alt="Yoga Expert 1" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Reconstruct Fitness</h4>
+                  <p class="text-sm text-gray-500">Noida, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐</p>
+                </div>
+                <div class="expert text-center">
+                  <img src="yoga2.jpg" alt="Yoga Expert 2" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Priyam Mohanty</h4>
+                  <p class="text-sm text-gray-500">New Delhi, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐</p>
+                </div>
+                <div class="expert text-center">
+                  <img src="yoga3.jpg" alt="Yoga Expert 3" class="w-24 h-24 mx-auto rounded-full object-cover mb-2">
+                  <h4 class="text-lg font-medium text-gray-800">Team Praanaa</h4>
+                  <p class="text-sm text-gray-500">Gurgaon, India</p>
+                  <p class="text-yellow-500 text-sm">⭐⭐⭐⭐⭐</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <section class="trusted-by">
+        <h2>Trusted by the best in the business.</h2>
+        <div class="logos">
+          <img src="nytimes-logo.png" alt="The New York Times">
+          <img src="wsj-logo.png" alt="Wall Street Journal">
+          <img src="fortune-logo.png" alt="Fortune">
+          <img src="today-logo.png" alt="Today">
+          <img src="cnn-logo.png" alt="CNN">
+          <img src="usatoday-logo.png" alt="USA Today">
+        </div>
+      </section>
+
+      <section id="price">
+        <div class="pricing-container">
+          <div class="pricing-card horizontal">
+            <div class="pricing-header">
+              <h2>Upgrade To Serene Strength Premium Today!</h2>
+            </div>
+            <div class="pricing-content">
+              <div class="pricing-details">
+                <span class="pricing-duration">Yearly</span>
+                <span class="pricing-cost">$49.99/yr. <small>($4.17/mo.)</small></span>
+              </div>
+              <div class="trial-info">
+                <span class="trial-period">14-Day Free Premium Trial</span>
+              </div>
+              <p class="pricing-description">
+                After your free trial, the yearly subscription is $49.99 and automatically renews each year until
+                cancelled. <br>
+                <a>Terms</a> | <a>Cancel anytime</a>
+              </p>
+              <button class="pricing-button"><a href="login.html">Continue</a></button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <section id="faq-section">
+          <div class="faq-container">
+            <h1>Frequently Asked Questions</h1>
+
+            <div class="faq-group">
+              <h2>General</h2>
+              <details>
+                <summary>What is Serene Strength's approach to fitness?</summary>
+                <div class="faq-answer">“We focus on holistic wellness by combining exercise, proper nutrition, and
+                  mindfulness techniques to help you reach your goals. This balanced approach ensures that you’re
+                  not only improving physically but also nurturing your mental and emotional well-being for
+                  overall success.”</div>
+              </details>
+              <details>
+                <summary>Do you offer personalized plans?</summary>
+                <div class="faq-answer">Yes, we provide customized workout and nutrition plans tailored to your
+                  individual needs and preferences.</div>
+              </details>
+            </div>
+
+            <div class="faq-group">
+              <h2>Workouts</h2>
+              <details>
+                <summary>What types of workouts do you offer?</summary>
+                <div class="faq-answer">We have a variety of workouts, including strength training, cardio, yoga,
+                  HIIT, and flexibility exercises.</div>
+              </details>
+              <details>
+                <summary>How long are the workouts?</summary>
+                <div class="faq-answer">Our workouts range from 15 minutes to 1 hour, catering to different
+                  schedules and fitness levels.</div>
+              </details>
+            </div>
+
+            <div class="faq-group">
+              <h2>Nutrition</h2>
+              <details>
+                <summary>Do you provide nutritional guidance?</summary>
+                <div class="faq-answer">Yes, our nutrition plans include meal suggestions, recipes, and tips for
+                  healthy eating habits.</div>
+              </details>
+              <details>
+                <summary>Can you accommodate dietary restrictions?</summary>
+                <div class="faq-answer">Absolutely! We can create plans that are vegetarian, vegan, gluten-free, and
+                  more.</div>
+              </details>
+            </div>
+
+            <div class="faq-group">
+              <h2>Membership</h2>
+              <details>
+                <summary>What are the benefits of becoming a member?</summary>
+                <div class="faq-answer">Members get access to exclusive content, personalized plans, community
+                  support, and tools to track their progress, helping them stay motivated and on track.</div>
+              </details>
+              <details>
+                <summary>How do I cancel my membership?</summary>
+                <div class="faq-answer">“You can easily cancel your membership at any time by going to your account
+                  settings or by contacting our customer support team, who will assist you with the process.”
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="contact">
+          <div class="contact-container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+              <p>
+                <span class="contact-label">Email:</span> <a href="mailto:contact@fitnesswellness.com">📩
+                  contact@fitnesswellness.com</a><br><br>
+                <span class="contact-label">Address:</span> 123, MG Road, Indiranagar, Bengaluru, Karnataka -
+                560038, India<br><br>
+                <span class="contact-label">Phone:</span>
+              <ul>
+                <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+                <li><a href="tel:+919123456789">📞 +91 91234 56789</a></li>
+                <li><a href="tel:+918765432109">📞 +91 87654 32109</a></li>
+              </ul>
+              </p>
+            </div>
+            <div class="contact-form">
+              <h3>Send us a message</h3>
+              <form action="#" method="post">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <p>&copy; 2025 Serene Strength. All Rights Reserved.</p>
+          <p>Follow us on:
+            <a href="https://instagram.com" target="_blank"> <i class="fab fa-instagram"> Instagram</i></a> |
+            <a href="https://facebook.com" target="_blank"> <i class="fab fa-facebook"> Facebook</i></a> |
+            <a href="https://youtube.com" target="_blank"> <i class="fab fa-youtube"> Youtube</i></a>
+          </p>
+        </footer>
+        <!-- Floating AI Chat (bottom-right) -->
+        <div id="aiFloating" class="ai-floating">
+          <button id="aiOpen" class="ai-btn" title="Open AI chat">🤖</button>
+          <div id="aiPanel" class="ai-panel hidden">
+            <div class="ai-panel-head">
+              <strong>Serene — AI Coach</strong>
+              <button id="aiMinimize" class="ai-min">-</button>
+            </div>
+            <div id="aiMessages" class="ai-messages"></div>
+            <div class="ai-input">
+              <input id="aiInput" placeholder="Ask the assistant..." />
+              <button id="aiSend" class="btn">Send</button>
+            </div>
+          </div>
+        </div>
+        <script>
+          window.addEventListener('load', function () {
+            // Initialize Lucide icons (if any)
+            if (window.lucide) lucide.createIcons();
+
+            // Update function
+            function updateProgress(section) {
+              const items = document.querySelectorAll(`.${section}-item`);
+              const done = [...items].filter(i => i.checked).length;
+              const percent = items.length ? Math.round((done / items.length) * 100) : 0;
+
+              const bar = document.getElementById(`${section}-bar`);
+              const text = document.getElementById(`${section}-percent`);
+
+              if (bar) bar.style.width = `${percent}%`;
+              if (text) text.textContent = `${percent}%`;
+            }
+
+            // Set up event listeners
+            document.querySelectorAll('input[type="checkbox"][data-section]').forEach(cb => {
+              cb.addEventListener('change', e => {
+                const section = e.target.dataset.section;
+                updateProgress(section);
+
+                const lbl = document.querySelector(`label[for="${e.target.id}"]`);
+                if (lbl) {
+                  lbl.classList.toggle('line-through', e.target.checked);
+                  lbl.classList.toggle('text-gray-400', e.target.checked);
+                }
+              });
+            });
+
+            // Initialize progress on page load
+            const sections = new Set(
+              [...document.querySelectorAll('input[data-section]')].map(cb => cb.dataset.section)
+            );
+            sections.forEach(updateProgress);
+          });
+
+          /*************** AI chat UI *********************/
+          const aiOpen = document.getElementById('aiOpen'), aiPanel = document.getElementById('aiPanel'), aiSend = document.getElementById('aiSend'), aiInput = document.getElementById('aiInput'), aiMessages = document.getElementById('aiMessages');
+          aiOpen.addEventListener('click', () => aiPanel.classList.toggle('hidden'));
+          document.getElementById('aiMinimize').addEventListener('click', () => aiPanel.classList.add('hidden'));
+          aiSend.addEventListener('click', sendAi);
+          aiInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendAi(); });
+
+          async function sendAi() {
+            const msg = aiInput.value.trim();
+            if (!msg) return;
+
+            appendAi('user', msg);
+            aiInput.value = '';
+
+            try {
+              const token = localStorage.getItem('token'); // must be stored after login
+
+              const res = await fetch('http://localhost:5000/api/ask', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`, // important!
+                },
+                body: JSON.stringify({ message: msg }),
+              });
+
+              if (!res.ok) {
+                const err = await res.json();
+                appendAi('assistant', err.message || 'AI unavailable');
+                return;
+              }
+
+              const data = await res.json();
+              appendAi('assistant', data.reply || 'No response');
+            } catch (e) {
+              console.error(e);
+              appendAi('assistant', 'Network error');
+            }
+          }
+          function appendAi(role, text) { const div = document.createElement('div'); div.className = 'ai-msg ' + role; div.textContent = text; aiMessages.appendChild(div); aiMessages.scrollTop = aiMessages.scrollHeight; }
+
+        </script>
+
+</body>
+
+</html>

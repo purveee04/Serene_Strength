@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.css" /> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="background-video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+  </div>
+
+  <div class="login-container">
+    <h2>Welcome Back</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <input type="text" id="username" required />
+        <label for="username">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" required />
+        <label for="password">Password</label>
+      </div>
+      <button type="submit">Login</button>
+
+      <p class="forgot-password">
+        <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+      </p>
+      <p class="register-link">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+      </p>
+    </form>
+
+    <div id="forgotModal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Reset Password</h3>
+        <p>Enter your registered email address to reset your password.</p>
+        <input type="email" id="forgotEmail" placeholder="Enter email" required />
+        <button id="sendResetBtn">Send Reset Link</button>
+        <button id="closeModal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const forgotModal = document.getElementById("forgotModal");
+    const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+    const closeModalBtn = document.getElementById("closeModal");
+    const sendResetBtn = document.getElementById("sendResetBtn");
+
+    // --- LOGIN FUNCTIONALITY ---
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!username || !password) {
+        alert("⚠️ Please fill in both username and password.");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/auth/login", { // Adjusted URL based on server.js (assuming authRoutes)
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+          if (data.token) {
+            localStorage.setItem("token", data.token);
+          }
+          localStorage.setItem("username", data.user.username);
+          alert("✅ Login successful!");
+          window.location.href = "post-login-temp.html";
+        } else {
+          alert(data.message || "❌ Invalid username or password.");
+        }
+      } catch (error) {
+        console.error("Error connecting to server:", error);
+        alert("⚠️ Network error. Could not reach the server.");
+      }
+    });
+
+    // --- MODAL FUNCTIONALITY ---
+    
+    // 1. Show the modal when 'Forgot Password?' is clicked
+    forgotPasswordLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      forgotModal.classList.remove("hidden");
+    });
+    
+    // 2. Hide the modal when 'Cancel' is clicked
+    closeModalBtn.addEventListener("click", () => {
+      forgotModal.classList.add("hidden");
+    });
+
+    // 3. Handle the Password Reset Submission
+    sendResetBtn.addEventListener("click", async () => {
+        const email = document.getElementById("forgotEmail").value.trim();
+        
+        if (!email) {
+            alert("Please enter your email address.");
+            return;
+        }
+
+        try {
+          const response = await fetch("http://localhost:5000/api/auth/forgot-password", { // Adjusted URL
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+
+          const data = await response.json();
+          alert(data.message || "If this email exists, password reset instructions were sent.");
+          forgotModal.classList.add("hidden"); // Close modal after action
+        } catch (error) {
+          console.error("Error:", error);
+          alert("⚠️ Could not send reset email. Try again later.");
+        }
+    });
+  </script>
+</body>
+</html>

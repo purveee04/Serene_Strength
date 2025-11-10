@@ -1,0 +1,277 @@
+/* General Styles */
+body { width: 100%;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header */
+header {
+    width: 100%;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+    opacity: 0.9;
+}
+header h1 {
+    .heading {
+        font-family: 'Didot', serif; 
+       display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold bold;
+      }
+      .cult {
+        font-weight: bold;
+        color: white;
+        font-size: 40px;
+    }
+    } 
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #222;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Motivation Box */
+.motivation-container {
+    position: relative;
+    max-width: 600px;
+    text-align: center;
+}
+
+.motivation-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 2;
+}
+
+/* Butterfly Animation */
+.butterfly {
+    width: 50px;
+    height: 50px;
+    background: url('butterfly.jpg') no-repeat center center/contain;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    animation: flyAround 6s linear infinite;
+}
+
+/* Keyframes for smooth flying effect */
+@keyframes flyAround {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(50px, -40px) rotate(20deg); }
+    40% { transform: translate(100px, 10px) rotate(-15deg); }
+    60% { transform: translate(150px, -20px) rotate(10deg); }
+    80% { transform: translate(100px, 30px) rotate(-10deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+
+
+@keyframes fly {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, -30px) rotate(15deg); }
+    50% { transform: translate(100px, 0px) rotate(-15deg); }
+    75% { transform: translate(50px, 30px) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Sections */
+.meditation-section, .yoga-section, .faq-section {
+    padding: 80px 20px;
+}
+/* Meditation Section */
+.meditation-section {
+    padding: 100px 20px;
+    background: url('yoga-bg.jpg') no-repeat center center/cover;
+    color: white;
+}
+
+.meditation-section h1 {
+    font-size: 2.5rem;
+}
+
+.meditation-timer {
+    margin-top: 20px;
+}
+
+
+/* Meditation Timer */
+#timer-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ffcc00;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#timer-button:hover {
+    background: #ffaa00;
+}
+
+/* Music Button */
+.music-container {
+    margin-top: 20px;
+}
+#music-button {
+    background: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+   
+    font-size: 1rem;
+}
+
+#music-button:hover {
+    background: #cc5200;
+}
+/* Yoga Section */
+.yoga-section {
+    padding: 50px 20px;
+    background: rgb(185, 204, 228);
+}
+
+.yoga-section h1 {
+    font-size: 2rem;
+}
+
+.yoga-poses {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.yoga-pose {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.yoga-pose img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.yoga-pose:hover {
+    transform: scale(1.1);
+}
+
+.yoga-pose p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.explore-more {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #0073e6;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.explore-more:hover {
+    background: #005bb5;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: white;
+}
+
+.faq {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    padding: 15px;
+    border-left: 5px solid #0073e6;
+    background: #f9f9f9;
+}
+/* Motivation Section */
+.motivation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, #cde7d8, #f7f3d7);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}

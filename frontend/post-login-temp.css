@@ -1,0 +1,736 @@
+/* General body and font setup */
+:root {
+  --main-green: #8aa577;
+  --main-blue: #8db4d1;
+  --main-beige: #c1a074;
+  --text-dark: #3d1f00;
+}
+* {
+  transition: all 0.3s ease-in-out;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Using Poppins for a modern look */
+    background-color: #f8f8f8;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* --- HEADER AND NAVIGATION --- */
+header {
+    background: url('collage.jpg') no-repeat center center/cover;
+    text-align: center;
+    padding: 100px 20px 0;
+    position: relative;
+    opacity: 0.9;
+}
+
+.heading {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.cult {
+    font-weight: bold;
+    text-shadow: -2px -2px 0 rgb(208, 200, 200),  
+                 2px -2px 0 black,  
+                 -2px 2px 0 black,  
+                 2px 2px 0 black;
+    color: transparent;
+    font-size: 100px;
+}
+
+nav {
+    background-color: #4F5B66; /* Dark slate blue */
+    padding: 15px 0;
+    margin-top: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #687582; /* Lighter shade on hover */
+    border-radius: 5px;
+}
+
+/* User Menu Dropdown */
+.user-menu {
+    position: relative;
+}
+
+.user-menu .dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    min-width: 180px;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+.user-menu:hover .dropdown {
+    display: block;
+}
+
+.user-menu .dropdown li a {
+    color: #333;
+    padding: 10px 20px;
+    display: block;
+    white-space: nowrap;
+}
+
+.user-menu .dropdown li a:hover {
+    background-color: #f0f0f0;
+}
+
+.user-menu .dropdown li a i {
+    margin-right: 10px;
+}
+
+/* --- AI ASSISTANT TOGGLE BUTTON --- */
+#ai-assistant-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #007bff; /* Blueish color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 2000; /* Ensure it's above everything */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#ai-assistant-toggle:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* --- SPLIT LAYOUT STYLING --- */
+#main-app-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+}
+
+#webpage-content {
+    /* The main webpage content (70% in split view) */
+    width: 100%; /* Default: full width */
+    transition: width 0.5s ease;
+    flex-shrink: 0;
+    overflow-x: hidden;
+}
+
+#ai-assistant-panel {
+    /* The Chatbot panel (30% in split view) */
+    width: 0%; /* Default: hidden */
+    transition: width 0.5s ease;
+    border-left: 5px solid #f0f0f0; /* Thin gap/separator */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    background: #fefefe;
+    flex-shrink: 0;
+}
+
+#chat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- GOALS SECTION REFINEMENT (Daily Focus) --- */
+.goals-section {
+    background: #fdfdfd; 
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.goals-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #4F5B66; /* Dark sophisticated color */
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.weekly-heading {
+    margin-top: 50px;
+}
+
+.goal-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.goal-card {
+    /* Card Styling to mimic 'Expert' cards - VERTICALLY ALIGNED */
+    background: #ffffff; 
+    padding: 30px 20px; 
+    border-radius: 12px;
+    border: 1px solid #e0e0e0; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    
+    flex: 1 1 280px; 
+    max-width: 350px;
+}
+
+.goal-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.daily-card {
+    border-top: 5px solid #007bff; /* Blueish theme for Daily */
+}
+
+.weekly-card {
+    background: #f9f9f9; 
+    border-top: 5px solid #8aa577; /* Greenish theme for Weekly */
+}
+
+.goal-icon {
+    font-size: 2.5rem;
+    color: #007bff; /* Blue Icon color for Daily */
+    margin-bottom: 15px;
+}
+
+.weekly-card .goal-icon {
+    color: #8aa577; /* Green Icon color for Weekly */
+}
+
+.goal-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Goal List Styling */
+.goal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    max-width: 250px; 
+}
+
+.goal-list li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.goal-list li i {
+    color: #007bff; /* Blue checkmark color */
+    margin-right: 8px;
+    font-size: 0.85rem;
+    padding-top: 3px;
+}
+
+/* --- SERVICES SECTION --- */
+.services {
+    background-color: #8aa577; /* Light greenish-brown */
+    padding: 60px 20px;
+}
+
+.section-title-box {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+/* --- NEW: DAILY FOCUS / GOAL BOX ENHANCEMENTS --- */
+/* --- NEW: COMPLETION BAR STYLING --- */
+
+.completion-bar-wrapper {
+    /* Ensures the bar section is centered and has a max width */
+    width: 90%; 
+    max-width: 1000px; 
+    margin: 40px auto 20px auto; 
+    text-align: center;
+}
+
+.completion-bar-wrapper p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+/* CRITICAL FIX: The SHELL (Background) */
+.completion-bar-shell {
+    background-color: #768798; /* Light gray shell color */
+    height: 15px; /* <--- THIS IS THE KEY TO VISIBILITY */
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+/* CRITICAL FIX: The FILL (Progress) */
+.completion-bar-fill {
+    height: 100%; /* Fills the 15px height of the shell */
+    background-color: #28a745; /* Green fill color */
+    transition: width 0.5s ease-in-out; 
+}
+
+/* --- TRAINERS SECTION --- */
+#train-at-home {
+    background-color: #f4f4f4;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#train-at-home h2 {
+    font-size: 2.5rem;
+    color: #3d1f00;
+    margin-bottom: 10px;
+}
+
+#train-at-home p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.expert-categories {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.category {
+    flex: 1 1 30%;
+    min-width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 1.8rem;
+    color: #4F5B66;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8aa577;
+    padding-bottom: 10px;
+}
+
+.expert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.expert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.expert:hover {
+    background-color: #f9f9f9;
+}
+
+.expert img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #8aa577;
+}
+
+.expert h4 {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: #3d1f00;
+}
+
+.expert p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- TRUSTED BY SECTION --- */
+.trusted-by {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.trusted-by h2 {
+    font-size: 1.8rem;
+    color: #4F5B66;
+    margin-bottom: 30px;
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.logos img {
+    height: 40px;
+    max-width: 150px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.logos img:hover {
+    opacity: 1;
+}
+
+/* --- PRICING SECTION --- */
+#price {
+    background-color: #f8f8f8;
+    padding: 60px 20px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pricing-card.horizontal {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
+    text-align: left;
+}
+
+.pricing-header {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.pricing-header h2 {
+    font-size: 2rem;
+    color: #3d1f00;
+    line-height: 1.2;
+}
+
+.pricing-content {
+    flex: 1;
+    border-left: 2px solid #f0f0f0;
+    padding-left: 40px;
+}
+
+.pricing-details {
+    margin-bottom: 10px;
+}
+
+.pricing-duration {
+    font-size: 1.2rem;
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pricing-cost {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #8aa577;
+}
+
+.pricing-cost small {
+    font-size: 1rem;
+    color: #777;
+}
+
+.trial-info {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.pricing-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.pricing-button {
+    background-color: #8aa577;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.pricing-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.pricing-button:hover {
+    background-color: #6d855e;
+}
+
+/* --- ABOUT/FAQ SECTION --- */
+#about-us {
+    background-color: #ffffff;
+    padding: 60px 20px;
+}
+
+.faq-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #3d1f00;
+    margin-bottom: 40px;
+}
+
+/* --- CONTACT SECTION --- */
+#contact {
+    background-color: #4F5B66;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-info, .contact-form {
+    flex: 1 1 45%;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.contact-info h3, .contact-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #8aa577;
+}
+
+.contact-info p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #8aa577;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    background-color: #007bff; 
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3; 
+}
+/* AI floating */
+.ai-floating{position:fixed;right:22px;bottom:22px;z-index:1200}
+.ai-btn{width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#6ee7b7,#10b981);border:none;color:#fff;font-size:24px;box-shadow:0 8px 30px rgba(16,185,129,0.18);cursor:pointer}
+.ai-panel{width:360px;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.12);overflow:hidden;margin-top:10px}
+.ai-panel.hidden{display:none}
+.ai-panel-head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #f1f5f9}
+.ai-messages{max-height:240px;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.ai-msg{padding:8px;border-radius:8px;max-width:80%}
+.ai-msg.user{align-self:flex-end;background:#e6f8ff}
+.ai-msg.assistant{align-self:flex-start;background:#fff7ea}
+.ai-input{display:flex;padding:10px;border-top:1px solid #f1f5f9}
+.ai-input input{flex:1;padding:8px;border-radius:8px;border:1px solid #e6eef7;margin-right:8px}
+/* --- FOOTER --- */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #8aa577;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1000px) {
+    .pricing-card.horizontal {
+        flex-direction: column;
+        text-align: center;
+        max-width: 500px;
+    }
+    .pricing-header {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    .pricing-content {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid #f0f0f0;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cult {
+        font-size: 60px;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .goal-grid, .service-container, .expert-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+   .goal-card, .service-box, .category, .daily-goal-box { 
+    min-width: unset;
+    width: 90%;
+    max-width: 400px;
+}
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info, .contact-form {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
+
+/* Specific adjustment for mobile split screen */
+@media (max-width: 600px) {
+    /* When chatbot is active, hide main content and show chatbot full screen */
+    .split-active #webpage-content {
+        width: 0% !important; 
+        opacity: 0;
+    }
+
+    .split-active #ai-assistant-panel {
+        width: 100% !important; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1500;
+    }
+}

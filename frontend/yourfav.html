@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serene Strength - Your Favourites</title>
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Define your theme colors */
+        :root {
+            --color-primary: #8aa577; /* Soft Green */
+            --color-secondary: #3d1f00; /* Dark Brown/Gold */
+            --color-text: #333;
+            --color-light-gray: #f8f8f8;
+            --color-white: #ffffff;
+            --color-shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-light-gray);
+            color: var(--color-text);
+            min-height: 100vh;
+        }
+
+        /* --- Header & Back Button --- */
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 0;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px; 
+            left: 20px;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background-color: var(--color-white); 
+            transition: background-color 0.3s, color 0.3s;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background-color: #e8e8e8;
+            color: var(--color-primary);
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            text-align: center;
+            margin: 40px 0 30px;
+        }
+
+        /* --- Main Content Layout --- */
+        .favorites-dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .favorites-section {
+            margin-bottom: 40px;
+            background: var(--color-white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--color-shadow);
+            position: relative; /* Needed for the scroll helper */
+        }
+
+        .section-heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* --- Horizontal Scrolling Container --- */
+        .scroll-container {
+            display: flex;
+            overflow-x: scroll; /* Enables horizontal scrolling */
+            padding-bottom: 15px; /* Space for the scroll bar */
+            gap: 20px;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+        /* Hide scrollbar for aesthetics */
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-container {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        /* --- Individual Card Styling --- */
+        .favorite-card {
+            flex-shrink: 0; /* Prevents cards from shrinking */
+            width: 280px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            /* Placeholder for image based on category */
+            background-color: var(--color-primary); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+            white-space: normal;
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .card-detail i {
+            margin-right: 5px;
+            color: var(--color-primary);
+        }
+        
+        .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #CC0000;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s;
+        }
+
+        .remove-btn:hover {
+            background: var(--color-white);
+        }
+        
+        /* Disable button when in local mode */
+        .remove-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* --- Empty State --- */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-style: italic;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .empty-state i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        
+        /* --- Scroll Helper Indicator --- */
+        .scroll-hint {
+            position: absolute;
+            top: 65px;
+            right: 25px;
+            background: rgba(138, 165, 119, 0.9); /* Primary color slightly translucent */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+            display: none; /* Hidden by default */
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 2rem;
+                margin-top: 20px;
+            }
+            .favorites-dashboard {
+                padding: 0 10px 20px;
+            }
+            .favorites-section {
+                padding: 15px;
+            }
+            .favorite-card {
+                width: 250px; 
+            }
+            .scroll-hint {
+                top: 55px; /* Adjust position for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <!-- Assuming the home page is index.html -->
+       
+        <h1 class="main-title">Your Favourites</h1>
+    </div>
+
+    <div class="favorites-dashboard">
+        
+        <!-- YOGA SESSIONS SECTION -->
+        <div class="favorites-section">
+            <h2 class="section-heading">
+                <i class="fas fa-leaf"></i> Favorite Yoga Sessions
+            </h2>
+            <p id="yoga-local-mode-warning" style="color:#d97706; font-size:0.9rem; text-align:center; display:none;">
+                ⚠️ Running in local mode. Cards are for display only and cannot be removed/saved.
+            </p>
+            <div id="yoga-scroll-hint" class="scroll-hint">Scroll <i class="fas fa-arrow-right"></i></div>
+            <div id="yoga-sessions-container" class="scroll-container">
+                <!-- Yoga cards will be rendered here -->
+            </div>
+            <div id="yoga-empty-state" class="empty-state" style="display:none;">
+                <i class="fas fa-heart-broken"></i>
+                <p>You haven't added any favorite yoga sessions yet.</p>
+            </div>
+        </div>
+
+        <!-- WORKOUT SESSIONS SECTION -->
+        <div class="favorites-section">
+            <h2 class="section-heading">
+                <i class="fas fa-dumbbell"></i> Favorite Workout Sessions
+            </h2>
+            <div id="workout-scroll-hint" class="scroll-hint">Scroll <i class="fas fa-arrow-right"></i></div>
+            <div id="workout-sessions-container" class="scroll-container">
+                <!-- Workout cards will be rendered here -->
+            </div>
+            <div id="workout-empty-state" class="empty-state" style="display:none;">
+                <i class="fas fa-heart-broken"></i>
+                <p>You haven't added any favorite workout sessions yet.</p>
+            </div>
+        </div>
+
+        <!-- DIET PLANS SECTION -->
+        <div class="favorites-section">
+            <h2 class="section-heading">
+                <i class="fas fa-apple-alt"></i> Favorite Diet Plans
+            </h2>
+            <div id="diet-scroll-hint" class="scroll-hint">Scroll <i class="fas fa-arrow-right"></i></div>
+            <div id="diet-plans-container" class="scroll-container">
+                <!-- Diet plan cards will be rendered here -->
+            </div>
+            <div id="diet-empty-state" class="empty-state" style="display:none;">
+                <i class="fas fa-heart-broken"></i>
+                <p>You haven't added any favorite diet plans yet.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- --- JavaScript for Firebase Setup and Data Interaction --- -->
+    <script type="module">
+        // Import necessary Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, addDoc, getDocs, collection, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables provided by the environment (will be empty when running locally)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db;
+        let auth;
+        let userId = null;
+
+        // Container references
+        const containers = {
+            yoga: {
+                element: document.getElementById('yoga-sessions-container'),
+                empty: document.getElementById('yoga-empty-state'),
+                hint: document.getElementById('yoga-scroll-hint'),
+                icon: 'fas fa-clock',
+                detailKey: 'duration'
+            },
+            workouts: {
+                element: document.getElementById('workout-sessions-container'),
+                empty: document.getElementById('workout-empty-state'),
+                hint: document.getElementById('workout-scroll-hint'),
+                icon: 'fas fa-fire',
+                detailKey: 'calories'
+            },
+            diet: {
+                element: document.getElementById('diet-plans-container'),
+                empty: document.getElementById('diet-empty-state'),
+                hint: document.getElementById('diet-scroll-hint'),
+                icon: 'fas fa-list-alt',
+                detailKey: 'meals'
+            }
+        };
+
+        // --- Fallback Seed Data (used when Firebase config is missing locally) ---
+        const FALLBACK_SEED_DATA = {
+            yoga: [
+                // Six items to guarantee scrolling works immediately
+                { id: 'fb1', title: "Morning Sun Salutations", duration: "15 min", tag: "Energy Boost", image_icon: "fas fa-sun" },
+                { id: 'fb2', title: "Deep Restorative Flow", duration: "45 min", tag: "Stress Relief", image_icon: "fas fa-moon" },
+                { id: 'fb3', title: "Warrior Core Strength", duration: "30 min", tag: "Challenge", image_icon: "fas fa-bolt" },
+                { id: 'fb4', title: "Hips and Lower Back Release", duration: "25 min", tag: "Recovery", image_icon: "fas fa-spa" },
+                { id: 'fb5', title: "Bedtime Stretch Routine", duration: "10 min", tag: "Relaxation", image_icon: "fas fa-cloud" },
+                { id: 'fb6', title: "Intermediate Power Vinyasa", duration: "60 min", tag: "Endurance", image_icon: "fas fa-fire-alt" }
+            ],
+            workouts: [
+                { id: 'fb7', title: "Full Body HIIT", calories: "450 kcal", tag: "High Intensity", image_icon: "fas fa-running" },
+                { id: 'fb8', title: "Low Impact Cardio", calories: "200 kcal", tag: "Gentle", image_icon: "fas fa-walking" },
+                { id: 'fb9', title: "Upper Body Sculpt", calories: "300 kcal", tag: "Strength", image_icon: "fas fa-hand-rock" }
+            ],
+            diet: [
+                { id: 'fb10', title: "Mediterranean Plan", meals: 3, tag: "Healthy Fats", image_icon: "fas fa-olive" },
+                { id: 'fb11', title: "High Protein Build", meals: 4, tag: "Muscle Gain", image_icon: "fas fa-drumstick-bite" },
+                { id: 'fb12', title: "Vegetarian Reboot", meals: 3, tag: "Plant-Based", image_icon: "fas fa-seedling" }
+            ]
+        };
+
+        /**
+         * Renders the favorite items into their respective containers.
+         * @param {string} category - 'yoga', 'workouts', or 'diet'.
+         * @param {Array<Object>} items - Array of favorite documents.
+         * @param {boolean} [isLocalMode=false] - Whether running in local fallback mode.
+         */
+        function renderFavorites(category, items, isLocalMode = false) {
+            const { element, empty, hint, icon, detailKey } = containers[category];
+            element.innerHTML = ''; 
+
+            if (items.length === 0) {
+                empty.style.display = 'block';
+                hint.style.display = 'none';
+                return;
+            }
+            
+            empty.style.display = 'none';
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('favorite-card');
+                card.dataset.id = item.id;
+
+                const detailValue = item[detailKey];
+                const detailText = detailKey === 'meals' ? `${detailValue} Meals/Day` : detailValue;
+                const disableAttribute = isLocalMode ? 'disabled' : '';
+
+                card.innerHTML = `
+                    <button class="remove-btn" data-category="${category}" data-id="${item.id}" title="Remove from Favourites" ${disableAttribute}>
+                        <i class="fas fa-heart-broken"></i>
+                    </button>
+                    <div class="card-image">
+                        <i class="${item.image_icon || 'fas fa-heart'}"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${item.title}</div>
+                        <div class="card-details">
+                            <span class="card-detail">
+                                <i class="${icon}"></i> ${detailText}
+                            </span>
+                        </div>
+                        <div class="card-details">
+                            <span class="card-detail" style="color:var(--color-secondary); font-weight:600;">
+                                ${item.tag}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                element.appendChild(card);
+            });
+            
+            // Show scroll hint if content overflows
+            if (element.scrollWidth > element.clientWidth) {
+                hint.style.display = 'block';
+            } else {
+                hint.style.display = 'none';
+            }
+        }
+        
+        /**
+         * Loads hardcoded data for display when Firebase cannot be initialized.
+         */
+        function loadFallbackData() {
+            console.warn("WARNING: Loading local fallback seed data.");
+            
+            // Show the warning banner
+            document.getElementById('yoga-local-mode-warning').style.display = 'block';
+            
+            // Render all categories using the fallback data, setting isLocalMode to true
+            renderFavorites('yoga', FALLBACK_SEED_DATA.yoga, true);
+            renderFavorites('workouts', FALLBACK_SEED_DATA.workouts, true);
+            renderFavorites('diet', FALLBACK_SEED_DATA.diet, true);
+        }
+        
+        /**
+         * Handles the click event to remove a favorite item (only runs in Firebase mode).
+         */
+        async function handleRemoveFavorite(event) {
+            const button = event.target.closest('.remove-btn');
+            if (!button || button.disabled) return; // Prevent action if disabled in local mode
+
+            const category = button.dataset.category;
+            const itemId = button.dataset.id;
+
+            if (!userId || !category || !itemId) {
+                console.error("Missing data for deletion.");
+                return;
+            }
+            
+            // NOTE: Using a custom modal is preferred over alert() in production.
+            if (!window.confirm(`Are you sure you want to remove this item from ${category}?`)) {
+                return;
+            }
+
+            try {
+                const itemRef = doc(db, 'artifacts', appId, 'users', userId, `favorites_${category}`, itemId);
+                await deleteDoc(itemRef);
+                console.log(`Successfully removed item ${itemId} from ${category}.`);
+            } catch (error) {
+                console.error("Error removing document: ", error);
+            }
+        }
+        
+        /**
+         * Seeds initial data if no favorites exist (only runs in Firebase mode).
+         */
+        async function seedInitialFavorites() {
+            for (const category of Object.keys(FALLBACK_SEED_DATA)) {
+                const colRef = collection(db, 'artifacts', appId, 'users', userId, `favorites_${category}`);
+                
+                const snapshot = await getDocs(colRef); 
+
+                if (snapshot.empty) {
+                    console.log(`Seeding initial data for ${category}...`);
+                    for (const item of FALLBACK_SEED_DATA[category]) {
+                        // Exclude the 'id' field which was only for local mapping
+                        const { id, ...dataToSave } = item;
+                        await addDoc(colRef, dataToSave);
+                    }
+                    console.log(`Seeding complete for ${category}.`);
+                }
+            }
+        }
+
+        /**
+         * Initializes Firebase and sets up the real-time listeners.
+         */
+        async function initializeAndLoadData() {
+            try {
+                // If firebaseConfig is empty, we must be running locally. Use fallback data.
+                if (Object.keys(firebaseConfig).length === 0) {
+                    loadFallbackData();
+                    return; 
+                }
+                
+                // --- Firebase Initialization (Only runs if config is present) ---
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                onAuthStateChanged(auth, async (user) => { 
+                    if (user) {
+                        userId = user.uid;
+                        console.log("SUCCESS: Firebase Auth Ready. User ID:", userId);
+                        
+                        await seedInitialFavorites();
+                        loadFavorites(); 
+                        
+                    } else {
+                        // If no token, sign in anonymously
+                        if (!initialAuthToken) {
+                            await signInAnonymously(auth);
+                        }
+                        userId = auth.currentUser?.uid || crypto.randomUUID(); 
+                        console.log("INFO: Signed in anonymously.");
+                    }
+                });
+
+            } catch (error) {
+                console.error("FATAL ERROR: Firebase initialization failed:", error);
+                // Fallback again in case initialization fails mid-way
+                loadFallbackData();
+            }
+        }
+        
+        /**
+         * Sets up the real-time listeners for all three favorite collections (Firebase mode).
+         */
+        function loadFavorites() {
+            if (!userId) {
+                console.error("Cannot load favorites: User ID is null.");
+                return;
+            }
+
+            const categories = ['yoga', 'workouts', 'diet'];
+
+            categories.forEach(category => {
+                const colRef = collection(db, 'artifacts', appId, 'users', userId, `favorites_${category}`);
+                
+                onSnapshot(colRef, (snapshot) => {
+                    const items = [];
+                    snapshot.forEach(doc => {
+                        items.push({ id: doc.id, ...doc.data() });
+                    });
+                    // isLocalMode is false here, as we are in Firebase mode
+                    renderFavorites(category, items, false); 
+                    console.log(`Updated ${category} favorites: ${items.length} items.`);
+                }, (error) => {
+                    console.error(`Error listening to ${category} favorites:`, error);
+                });
+            });
+        }
+        
+        window.addEventListener('load', () => {
+            initializeAndLoadData();
+            // Attach the click handler to the main dashboard container
+            const dashboard = document.querySelector('.favorites-dashboard');
+            if(dashboard) {
+                 dashboard.addEventListener('click', handleRemoveFavorite);
+            }
+        });
+
+    </script>
+</body>
+</html>

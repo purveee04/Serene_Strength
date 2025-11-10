@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — Serene Strength</title>
+  <link rel="stylesheet" href="profile.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-top">
+        <button id="sidebarToggle" class="hamburger" aria-label="Toggle sidebar">☰</button>
+        <div class="brand">
+          <div class="logo">SS</div>
+          <div class="brand-text"><strong>Serene</strong><small>Strength</small></div>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <ul>
+          <li data-route="dashboard"><span class="ico">🏠</span><span class="txt">Home</span></li>
+          <li data-route="time"><span class="ico">⏱</span><span class="txt">Time Spent</span></li>
+          <li data-route="favs"><span class="ico">★</span><span class="txt">Favourites</span></li>
+          <li data-route="courses"><span class="ico">🎓</span><span class="txt">Courses</span></li>
+          <li data-route="settings"><span class="ico">⚙️</span><span class="txt">Settings</span></li>
+          <li id="logoutBtn"><span class="ico">⎋</span><span class="txt">Log out</span></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- HEADER with animated background -->
+      <header class="header">
+        <div class="header-content">
+          <div class="greeting">
+            <h1 id="greet">Hello, <span id="username">Friend</span></h1>
+            <p id="subtext" class="subtext">Small consistent steps — big change.</p>
+          </div>
+
+          <div class="header-right">
+            <div class="avatar-wrap">
+              <img id="avatarImg" src="default-avatar.png" alt="avatar" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated background: big motivational words and cycling person -->
+        <div class="header-bg">
+          <div class="motivation-words">
+            <span>Move</span><span>Breathe</span><span>Fuel</span><span>Grow</span>
+          </div>
+          <div class="cyclist" aria-hidden="true">
+            <!-- simple SVG cyclist moving across -->
+            <svg viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet" class="cyclist-svg">
+              <g id="bike">
+                <circle cx="30" cy="42" r="10" fill="rgba(255,255,255,0.6)" />
+                <circle cx="100" cy="42" r="10" fill="rgba(255,255,255,0.6)" />
+                <rect x="30" y="28" width="40" height="4" rx="2" fill="#fff" />
+                <circle cx="55" cy="20" r="4" fill="#fff" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT -->
+      <section class="content">
+
+        <div class="left-col">
+          <!-- NUTRITION CARD -->
+          <article class="card card-nutrition">
+            <header class="card-head">
+              <h2>Nutrition</h2>
+              <div class="card-actions">
+                <button class="btn ghost" id="viewFavsNutrition">View your favourites</button>
+              </div>
+            </header>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="water-box">
+                  <label>Water (glasses/day)</label>
+                  <div class="water-controls">
+                    <input id="waterGoal" type="range" min="1" max="20" value="8" />
+                    <div class="water-meta">
+                      <button class="btn" id="drinkOne">+1</button>
+                      <button class="btn outline" id="resetWater">Start Fresh</button>
+                      <div class="water-counter"><span id="waterDrank">0</span>/<span id="waterGoalVal">8</span></div>
+                    </div>
+
+                    <div class="water-progress-visual">
+                      <div class="flower-wrap">
+                        <!-- flower SVG that blooms based on % -->
+                        <svg id="flower" viewBox="0 0 100 100">
+                          <g transform="translate(50,50)">
+                            <g id="petals" transform="">
+                              <g class="petal" transform="rotate(0) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                              <g class="petal" transform="rotate(60) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                              <g class="petal" transform="rotate(120) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                              <g class="petal" transform="rotate(180) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                              <g class="petal" transform="rotate(240) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                              <g class="petal" transform="rotate(300) translate(0,-22)">
+                                <ellipse rx="7" ry="18" fill="#FFD166" />
+                              </g>
+                            </g>
+                            <circle r="6" fill="#FF6B6B" />
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="bar-bg">
+                        <div id="waterBar" class="bar-fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="macros">
+                <label>Macros targets (grams)</label>
+                <div class="macros-grid">
+                  <div class="macro">
+                    <label>Carbs</label>
+                    <input id="carbsTarget" type="number" min="0" max="1000" value="200" />
+                  </div>
+                  <div class="macro">
+                    <label>Proteins</label>
+                    <input id="proteinsTarget" type="number" min="0" max="1000" value="50" />
+                  </div>
+                  <div class="macro">
+                    <label>Fats</label>
+                    <input id="fatsTarget" type="number" min="0" max="1000" value="50" />
+                  </div>
+                  <div class="macro">
+                    <label>Fibres</label>
+                    <input id="fibresTarget" type="number" min="0" max="1000" value="25" />
+                  </div>
+                </div>
+              </div>
+
+              <label class="diary-label">Meal diary</label>
+              <div class="diary diary-spiral" id="mealsDiaryWrap">
+                <textarea id="mealsDiary" placeholder="Breakfast / Lunch / Dinner — write meals here..."></textarea>
+                <div class="diary-actions">
+                  <button class="btn" id="saveMeals">Save Meals</button>
+                </div>
+              </div>
+
+              <div class="added-favs" id="addedFromFavNutrition">
+                <h4>Added from favourites</h4>
+                <div class="fav-list" id="favNutList"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- WORKOUT CARD -->
+          <article class="card card-workout">
+            <header class="card-head">
+              <h2>Workout</h2>
+              <div class="card-actions">
+                <button class="btn ghost" id="viewFavsWorkout">View your favourites</button>
+              </div>
+            </header>
+
+            <div class="card-body">
+              <div class="row">
+                <label>Daily minutes target</label>
+                <div class="minutes-row">
+                  <input id="workoutGoal" type="number" min="5" max="600" step="5" value="30" />
+                  <div class="minutes-actions">
+                    <button class="btn" id="add5Min">+5</button>
+                    <button class="btn" id="sub5Min">-5</button>
+                    <button class="btn outline" id="resetWorkout">Start Fresh</button>
+                  </div>
+                </div>
+
+                <div class="bar-bg">
+                  <div id="workoutBar" class="bar-fill"></div>
+                </div>
+                <div class="minutes-left" id="workoutLeft">0 mins left</div>
+              </div>
+
+              <hr>
+
+              <label>Pick routines (multi-select across levels)</label>
+              <div class="levels">
+                <label><input type="checkbox" class="lvl" value="beginner" /> Beginner</label>
+                <label><input type="checkbox" class="lvl" value="intermediate" /> Intermediate</label>
+                <label><input type="checkbox" class="lvl" value="advanced" /> Advanced</label>
+              </div>
+
+              <div id="pool" class="routine-pool"></div>
+
+              <div class="diary">
+                <label>Workout diary</label>
+                <textarea id="workoutDiary"></textarea>
+                <div class="diary-actions">
+                  <button class="btn" id="saveWorkoutDiary">Save Workout</button>
+                </div>
+              </div>
+
+              <div class="added-favs" id="addedFromFavWorkout">
+                <h4>Added from favourites</h4>
+                <div class="fav-list" id="favWorkList"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MEDITATION / YOGA -->
+          <article class="card card-meditation">
+            <header class="card-head">
+              <h2>Meditation & Yoga</h2>
+              <div class="card-actions">
+                <button class="btn ghost" id="viewFavsMed">View your favourites</button>
+              </div>
+            </header>
+
+            <div class="card-body">
+              <label>Daily meditation minutes</label>
+              <div class="minutes-row">
+                <input id="medGoal" type="number" min="5" max="300" step="5" value="15" />
+                <div class="minutes-actions">
+                  <button class="btn" id="add5Med">+5</button>
+                  <button class="btn" id="sub5Med">-5</button>
+                  <button class="btn outline" id="resetMed">Start Fresh</button>
+                </div>
+              </div>
+              <div class="bar-bg">
+                <div id="medBar" class="bar-fill"></div>
+              </div>
+
+              <hr>
+
+              <label>Yoga categories (multi-select)</label>
+              <div class="yoga-cats">
+                <label><input type="checkbox" class="ycat" value="strength" /> Strengthening</label>
+                <label><input type="checkbox" class="ycat" value="relax" /> Relaxation</label>
+                <label><input type="checkbox" class="ycat" value="flex" /> Flexibility</label>
+              </div>
+
+              <div id="yogaPool" class="routine-pool"></div>
+
+              <div class="diary">
+                <label>Meditation notes</label>
+                <textarea id="medDiary"></textarea>
+                <div class="diary-actions">
+                  <button class="btn" id="saveMedDiary">Save</button>
+                </div>
+              </div>
+
+              <div class="added-favs" id="addedFromFavMed">
+                <h4>Added from favourites</h4>
+                <div class="fav-list" id="favMedList"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="right-col">
+          <!-- WEEKLY -->
+          <article class="card card-weekly">
+            <header class="card-head">
+              <h2>Weekly Goals</h2>
+            </header>
+            <div class="card-body">
+              <label>Workout suggestions</label>
+              <select id="weeklyWorkoutSelect">
+                <option value="">— choose —</option>
+                <option>Gain muscle: +1 kg</option>
+                <option>Lose 0.5 kg</option>
+                <option>Complete 3 x 45 min sessions</option>
+                <option>Try a new activity (jog / cycle)</option>
+              </select>
+              <textarea id="weeklyWorkout" placeholder="Write your weekly workout goal..."></textarea>
+
+              <label>Nutrition suggestions</label>
+              <select id="weeklyNutritionSelect">
+                <option value="">— choose —</option>
+                <option>Drink 2L water daily</option>
+                <option>Eat fruit 5 days</option>
+                <option>Reduce junk by 50%</option>
+                <option>Try a healthy recipe</option>
+              </select>
+              <textarea id="weeklyNutrition" placeholder="Write your weekly nutrition goal..."></textarea>
+
+              <label>Wellbeing suggestions</label>
+              <select id="weeklyWellbeingSelect">
+                <option value="">— choose —</option>
+                <option>Sleep 7-8 hours</option>
+                <option>Daily 10 min breathing</option>
+                <option>Screen-free evening once/wk</option>
+              </select>
+              <textarea id="weeklyWellbeing" placeholder="Write your weekly wellbeing goal..."></textarea>
+
+              <div style="text-align:right;margin-top:10px">
+                <button class="btn" id="saveWeekly">Save Weekly</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- CALENDAR HEATMAP -->
+          <article class="card card-calendar">
+            <header class="card-head">
+              <h2>Activity Calendar</h2>
+            </header>
+            <div class="card-body">
+              <div id="calendarGrid" class="calendar-grid"></div>
+              <small class="muted">Hover or click a date to see details. Color shows activity intensity.</small>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <!-- Floating AI Chat (bottom-right) -->
+  <div id="aiFloating" class="ai-floating">
+    <button id="aiOpen" class="ai-btn" title="Open AI chat">🤖</button>
+    <div id="aiPanel" class="ai-panel hidden">
+      <div class="ai-panel-head">
+        <strong>Serene — AI Coach</strong>
+        <button id="aiMinimize" class="ai-min">_</button>
+      </div>
+      <div id="aiMessages" class="ai-messages"></div>
+      <div class="ai-input">
+        <input id="aiInput" placeholder="Ask the assistant..." />
+        <button id="aiSend" class="btn">Send</button>
+      </div>
+    </div>
+  </div> 
+
+  <!-- toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script>
+    /* -------------------------
+      CONFIG & HELPERS
+    ------------------------- */
+    const API_BASE = "http://localhost:5000"; // change to your backend
+    const token = localStorage.getItem("token");
+    async function authorizedFetch(path, opts = {}) {
+      const headers = opts.headers || {};
+      if (token) headers["Authorization"] = `Bearer ${token}`;
+      return fetch(API_BASE + path, { ...opts, headers });
+      try {
+        const res = await fetch(API_BASE + path, { ...opts, headers });
+        return res;
+      } catch (err) {
+        console.error("Network error:", err);
+        toast("⚠️ Could not reach the server");
+        throw err;
+      }
+    }
+    function toast(msg, t = 2200) {
+      const el = document.getElementById('toast');
+      // if (!el) { console.warn("Toast element missing:", msg); return; }
+      el.textContent = msg; el.classList.remove('hidden');
+      setTimeout(() => el.classList.add('hidden'), t);
+    }
+
+    /* -------------------------
+      Sidebar toggle
+    ------------------------- */
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    /* -------------------------
+      AUTH & PROFILE
+    ------------------------- */
+    async function loadProfile() {
+      if (!token) {
+        console.warn("No token found → redirecting to login");
+        window.location.href = "login.html";
+        return;
+      }
+      try {
+        const res = await authorizedFetch('/api/user/profile');
+        if (!res.ok) state.profile = await res.json();
+        document.getElementById('username').textContent = state.profile.name || state.profile.username || 'Friend';
+        if (state.profile.avatarUrl) document.getElementById('avatarImg').src = state.profile.avatarUrl;
+      } catch (err) {
+        console.error("Profile load error:", err);
+        // toast('Please login'); 
+        // localStorage.removeItem('token'); 
+        // window.location.href = "login.html";
+        //  setTimeout(() => (window.location.href = "login.html"), 1500);
+      }
+    }
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    });
+
+    /* -------------------------
+      STATE & Defaults
+    ------------------------- */
+    let state = { daily: null, weekly: null, favorites: [], activity: {} };
+
+    function defaultDaily() {
+      return {
+        waterGoal: 8, waterDrank: 0,
+        macros: { carbs: 200, proteins: 50, fats: 50, fibres: 25 },
+        mealsDiary: "",
+        workoutGoalMins: 30, workoutDoneMins: 0, workoutRoutines: [],
+        medGoalMins: 15, medDoneMins: 0, medRoutines: [],
+        addedFromFavNutrition: [], addedFromFavWorkout: [], addedFromFavMed: []
+      };
+    }
+    function defaultWeekly() { return { workout: "", nutrition: "", wellbeing: "" }; }
+
+    /* -------------------------
+      Load all backend data (profile, daily, weekly, favs, activity)
+    ------------------------- */
+    async function loadEverything() {
+      await loadProfile();
+      try {
+        const d = await authorizedFetch('/api/user/daily'); state.daily = d.ok ? await d.json() : defaultDaily();
+      } catch (e) { state.daily = defaultDaily(); }
+      try {
+        const w = await authorizedFetch('/api/user/weekly'); state.weekly = w.ok ? await w.json() : defaultWeekly();
+      } catch (e) { state.weekly = defaultWeekly(); }
+      try {
+        const f = await authorizedFetch('/api/user/favorites'); state.favorites = f.ok ? await f.json() : [];
+      } catch (e) { state.favorites = []; }
+      try {
+        const to = new Date();
+        const from = new Date();
+        from.setDate(to.getDate() - 29);
+        const a = await authorizedFetch(
+          `/api/user/activity?start=${from.toISOString().slice(0, 10)}&end=${to.toISOString().slice(0, 10)}`);
+        state.activity = a.ok ? await a.json() : {};
+      } catch (e) { state.activity = {}; }
+
+      // Ensure daily structure exists
+      if (!state.daily) state.daily = defaultDaily();
+      // If user has no addedFromFav arrays, initialize them
+      state.daily.addedFromFavNutrition = state.daily.addedFromFavNutrition || [];
+      state.daily.addedFromFavWorkout = state.daily.addedFromFavWorkout || [];
+      state.daily.addedFromFavMed = state.daily.addedFromFavMed || [];
+
+      renderAll();
+    }
+
+    /* -------------------------
+      RENDERING
+    ------------------------- */
+    function renderAll() {
+      if (!state.daily) state.daily = defaultDaily();
+      // water
+      document.getElementById('waterGoal').value = state.daily.waterGoal;
+      document.getElementById('waterGoalVal').textContent = state.daily.waterGoal;
+      document.getElementById('waterDrank').textContent = state.daily.waterDrank;
+      const wPct = Math.round((state.daily.waterDrank / Math.max(1, state.daily.waterGoal)) * 100);
+      document.getElementById('waterBar').style.width = Math.min(100, wPct) + '%';
+      // macros
+      document.getElementById('carbsTarget').value = state.daily.macros.carbs;
+      document.getElementById('proteinsTarget').value = state.daily.macros.proteins;
+      document.getElementById('fatsTarget').value = state.daily.macros.fats;
+      document.getElementById('fibresTarget').value = state.daily.macros.fibres;
+      document.getElementById('mealsDiary').value = state.daily.mealsDiary || '';
+      // workout
+      document.getElementById('workoutGoal').value = state.daily.workoutGoalMins;
+      updateWorkoutBar();
+      renderPool();
+      renderFavLists();
+      // med
+      document.getElementById('medGoal').value = state.daily.medGoalMins;
+      const medPct = Math.round((state.daily.medDoneMins / Math.max(1, state.daily.medGoalMins)) * 100);
+      document.getElementById('medBar').style.width = Math.min(100, medPct) + '%';
+      document.getElementById('medDiary').value = state.daily.medDiary || '';
+      // weekly
+      document.getElementById('weeklyWorkout').value = state.weekly.workout || '';
+      document.getElementById('weeklyNutrition').value = state.weekly.nutrition || '';
+      document.getElementById('weeklyWellbeing').value = state.weekly.wellbeing || '';
+      // calendar
+      buildCalendar();
+    }
+
+    /* update workout bar */
+    function updateWorkoutBar() {
+      const pct = Math.round((state.daily.workoutDoneMins / Math.max(1, state.daily.workoutGoalMins)) * 100);
+      document.getElementById('workoutBar').style.width = Math.min(100, pct) + '%';
+      document.getElementById('workoutLeft').textContent = Math.max(0, state.daily.workoutGoalMins - state.daily.workoutDoneMins) + ' mins left';
+    }
+
+    /* RENDER POOL (routines from checked levels) */
+    function renderPool() {
+      const pool = document.getElementById('pool'); pool.innerHTML = '';
+      // routine sets (you can expand)
+      const sets = {
+        beginner: [
+          "Warm-up: 30s jumping jacks + arm swings",
+          "Squats: 20 reps",
+          "Push-ups: 10",
+          "Lunges: 10 per leg",
+          "Plank: 15s"
+        ],
+        intermediate: [
+          "Burpees: 12",
+          "Push-ups: 20",
+          "Squat jumps: 15",
+          "Plank: 45s"
+        ],
+        advanced: [
+          "Pistol squats: 6/leg",
+          "Clap push-ups: 20",
+          "Sprint intervals 6x30s"
+        ]
+      };
+      const chosen = [...document.querySelectorAll('.lvl:checked')].map(n => n.value);
+      const items = [].concat(...chosen.map(c => sets[c] || []));
+      items.forEach((title, idx) => {
+        const el = document.createElement('div'); el.className = 'pool-item';
+        el.innerHTML = `<label><input type="checkbox" class="addRoutineChk" data-title="${title}"/> ${title}</label>
+      <div class="pool-actions">
+        <button class="btn tiny addRoutine">Add</button>
+        <button class="btn tiny startTimer" data-title="${title}">⏱</button>
+      </div>`;
+        pool.appendChild(el);
+      });
+      // existing routines show below pool as checklist (user selected)
+      const selected = state.daily.workoutRoutines || [];
+      selected.forEach((r, i) => {
+        const s = document.createElement('div'); s.className = 'routine-item';
+        s.innerHTML = `<input type="checkbox" class="routineDone" data-i="${i}" ${r.done ? 'checked' : ''}/> ${r.title}
+      <div class="routine-controls"><button class="btn tiny removeRoutine" data-i="${i}">✕</button>
+      <button class="btn tiny timerRoutine" data-i="${i}">⏱</button></div>`;
+        pool.appendChild(s);
+      });
+    }
+
+    /* render favourite lists into 'added from favourites' sections */
+    function renderFavLists() {
+      const map = [
+        { id: 'favNutList', arr: state.daily.addedFromFavNutrition },
+        { id: 'favWorkList', arr: state.daily.addedFromFavWorkout },
+        { id: 'favMedList', arr: state.daily.addedFromFavMed }
+      ];
+      map.forEach(m => {
+        const el = document.getElementById(m.id); el.innerHTML = '';
+        (m.arr || []).forEach((it, idx) => {
+          const node = document.createElement('div'); node.className = 'fav-line';
+          node.innerHTML = `<label><input type="checkbox" class="favDone" data-list="${m.id}" data-i="${idx}" ${it.done ? 'checked' : ''}/> ${it.title}</label>
+        <button class="btn tiny removeFav" data-list="${m.id}" data-i="${idx}">✕</button>`;
+          el.appendChild(node);
+        });
+      });
+    }
+
+    /* --------------- Calendar builder --------------- */
+    function buildCalendar() {
+      const grid = document.getElementById('calendarGrid'); grid.innerHTML = '';
+      const today = new Date();
+      const start = new Date(); start.setDate(today.getDate() - 29);
+      for (let i = 0; i < 30; i++) {
+        const d = new Date(start); d.setDate(start.getDate() + i);
+        const key = d.toISOString().slice(0, 10);
+        const score = state.activity[key] || 0; // expected minutes or score
+        const el = document.createElement('div'); el.className = 'cal-day';
+        el.textContent = d.getDate();
+        // color scale: 0 -> pale, 60+ -> deep green
+        const pct = Math.min(1, score / 60);
+        const g = Math.round(230 - (200 * pct));
+        el.style.background = `rgb(${240 - 90 * pct}, ${230 - 120 * (1 - pct)}, ${220 - 60 * pct})`;
+        el.title = `${key}: ${score} activity`;
+        el.addEventListener('click', () => toast(`${key}: ${score} min active`));
+        grid.appendChild(el);
+      }
+    }
+
+    /* -------------------------
+      UI ACTIONS: water, workout, med, diary, weekly
+    ------------------------- */
+    /* Water */
+    document.getElementById('waterGoal').addEventListener('input', (e) => {
+      const v = parseInt(e.target.value || 8);
+      document.getElementById('waterGoalVal').textContent = v;
+    });
+    document.getElementById('drinkOne').addEventListener('click', async () => {
+      state.daily.waterDrank = (state.daily.waterDrank || 0) + 1;
+      await saveDaily({ waterDrank: state.daily.waterDrank });
+      renderAll();
+    });
+    document.getElementById('resetWater').addEventListener('click', async () => {
+      state.daily.waterDrank = 0;
+      await saveDaily({ waterDrank: 0 });
+      renderAll(); toast('Water progress reset');
+    });
+    document.getElementById('saveMeals').addEventListener('click', async () => {
+      state.daily.mealsDiary = document.getElementById('mealsDiary').value;
+      state.daily.macros = {
+        carbs: parseInt(document.getElementById('carbsTarget').value || 0),
+        proteins: parseInt(document.getElementById('proteinsTarget').value || 0),
+        fats: parseInt(document.getElementById('fatsTarget').value || 0),
+        fibres: parseInt(document.getElementById('fibresTarget').value || 0)
+      };
+      await saveDaily({ mealsDiary: state.daily.mealsDiary, macros: state.daily.macros });
+      toast('Meals & macros saved');
+    });
+
+    /* Workout minutes */
+    document.getElementById('add5Min').addEventListener('click', async () => {
+      state.daily.workoutDoneMins = (state.daily.workoutDoneMins || 0) + 5;
+      await saveDaily({ workoutDoneMins: state.daily.workoutDoneMins });
+      updateWorkoutBar();
+    });
+    document.getElementById('sub5Min').addEventListener('click', async () => {
+      state.daily.workoutDoneMins = Math.max(0, (state.daily.workoutDoneMins || 0) - 5);
+      await saveDaily({ workoutDoneMins: state.daily.workoutDoneMins });
+      updateWorkoutBar();
+    });
+    document.getElementById('resetWorkout').addEventListener('click', async () => {
+      state.daily.workoutDoneMins = 0; await saveDaily({ workoutDoneMins: 0 }); updateWorkoutBar(); toast('Workout reset');
+    });
+    document.getElementById('saveWorkoutDiary').addEventListener('click', async () => {
+      state.daily.workoutDiary = document.getElementById('workoutDiary').value;
+      await saveDaily({ workoutDiary: state.daily.workoutDiary });
+      toast('Workout diary saved');
+    });
+
+    /* Meditation */
+    document.getElementById('add5Med').addEventListener('click', async () => {
+      state.daily.medDoneMins = (state.daily.medDoneMins || 0) + 5; await saveDaily({ medDoneMins: state.daily.medDoneMins }); renderAll();
+    });
+    document.getElementById('sub5Med').addEventListener('click', async () => { state.daily.medDoneMins = Math.max(0, (state.daily.medDoneMins || 0) - 5); await saveDaily({ medDoneMins: state.daily.medDoneMins }); renderAll(); });
+    document.getElementById('resetMed').addEventListener('click', async () => { state.daily.medDoneMins = 0; await saveDaily({ medDoneMins: 0 }); renderAll(); toast('Meditation reset'); });
+    document.getElementById('saveMedDiary').addEventListener('click', async () => { state.daily.medDiary = document.getElementById('medDiary').value; await saveDaily({ medDiary: state.daily.medDiary }); toast('Meditation saved'); });
+
+    /* Routine pool add */
+    document.addEventListener('click', async (e) => {
+      if (e.target.matches('.addRoutine')) {
+        // add checkbox selected ones (or nearest checkbox)
+        const chk = e.target.closest('.pool-item')?.querySelector('input[type="checkbox"]');
+        if (!chk) return;
+        const title = chk.dataset.title || chk.getAttribute('data-title') || chk.value || chk.closest('.pool-item')?.textContent.trim();
+        state.daily.workoutRoutines = state.daily.workoutRoutines || [];
+        state.daily.workoutRoutines.push({ title, done: false });
+        await saveDaily({ workoutRoutines: state.daily.workoutRoutines });
+        renderAll();
+      }
+      if (e.target.matches('.removeRoutine')) {
+        const i = parseInt(e.target.dataset.i); if (!isNaN(i)) { state.daily.workoutRoutines.splice(i, 1); await saveDaily({ workoutRoutines: state.daily.workoutRoutines }); renderAll(); }
+      }
+      if (e.target.matches('.routineDone')) {
+        const i = parseInt(e.target.dataset.i); if (!isNaN(i)) { state.daily.workoutRoutines[i].done = e.target.checked; await saveDaily({ workoutRoutines: state.daily.workoutRoutines }); updateWorkoutBar(); }
+      }
+      if (e.target.matches('.removeFav')) {
+        const list = e.target.dataset.list; const i = parseInt(e.target.dataset.i);
+        if (list && !isNaN(i)) {
+          const key = list === 'favNutList' ? 'addedFromFavNutrition' : list === 'favWorkList' ? 'addedFromFavWorkout' : 'addedFromFavMed';
+          state.daily[key].splice(i, 1);
+          await saveDaily({ [key]: state.daily[key] });
+          renderAll();
+        }
+      }
+    });
+
+    /* weekly selects -> populate textareas */
+    document.getElementById('weeklyWorkoutSelect').addEventListener('change', (e) => {
+      document.getElementById('weeklyWorkout').value = e.target.value;
+    });
+    document.getElementById('weeklyNutritionSelect').addEventListener('change', (e) => {
+      document.getElementById('weeklyNutrition').value = e.target.value;
+    });
+    document.getElementById('weeklyWellbeingSelect').addEventListener('change', (e) => {
+      document.getElementById('weeklyWellbeing').value = e.target.value;
+    });
+    document.getElementById('saveWeekly').addEventListener('click', async () => {
+      state.weekly = {
+        workout: document.getElementById('weeklyWorkout').value,
+        nutrition: document.getElementById('weeklyNutrition').value,
+        wellbeing: document.getElementById('weeklyWellbeing').value
+      };
+      try { await authorizedFetch('/api/user/weekly', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(state.weekly) }); toast('Weekly goals saved'); }
+      catch (e) { toast('Could not save weekly'); }
+    });
+
+    /* favorites view */
+    document.getElementById('viewFavsNutrition').addEventListener('click', () => window.location.href = 'yourfav.html');
+    document.getElementById('viewFavsWorkout').addEventListener('click', () => window.location.href = 'yourfav.html');
+    document.getElementById('viewFavsMed').addEventListener('click', () => window.location.href = 'yourfav.html');
+
+
+
+    /*************** AI chat UI *********************/
+
+    const aiOpen = document.getElementById('aiOpen'), aiPanel = document.getElementById('aiPanel'), aiSend = document.getElementById('aiSend'), aiInput = document.getElementById('aiInput'), aiMessages = document.getElementById('aiMessages');
+    aiOpen.addEventListener('click', () => aiPanel.classList.toggle('hidden'));
+    document.getElementById('aiMinimize').addEventListener('click', () => aiPanel.classList.add('hidden'));
+    aiSend.addEventListener('click', sendAi);
+    aiInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendAi(); });
+
+    async function sendAi() {
+  const msg = aiInput.value.trim();
+  if (!msg) return;
+
+  appendAi('user', msg);
+  aiInput.value = '';
+
+  try {
+    const token = localStorage.getItem('token'); // must be stored after login
+
+    const res = await fetch('http://localhost:5000/api/ask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // important!
+      },
+      body: JSON.stringify({ message: msg }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      appendAi('assistant', err.message || 'AI unavailable');
+      return;
+    }
+
+    const data = await res.json();
+    appendAi('assistant', data.reply || 'No response');
+  } catch (e) {
+    console.error(e);
+    appendAi('assistant', 'Network error');
+  }
+}
+    function appendAi(role, text) { const div = document.createElement('div'); div.className = 'ai-msg ' + role; div.textContent = text; aiMessages.appendChild(div); aiMessages.scrollTop = aiMessages.scrollHeight; }
+    
+    /* -------------------------
+      SAVE DAILY helper (calls backend)
+    ------------------------- */
+    async function saveDaily(payload) {
+      // state already mutated optimistically
+      try {
+        await authorizedFetch('/api/user/daily', {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) { console.error('saveDaily', err); }
+    }
+
+    /* -------------------------
+      Initial load
+    ------------------------- */
+    (async function init() {
+      await loadEverything();
+    })();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,722 @@
+
+header {
+    background: url('collage.jpg') no-repeat center center/cover;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    opacity: 0.9;
+}
+
+ .heading {
+
+        font-family: 'Arial', sans-serif; /* Or any preferred font */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+      
+      .cult {
+            font-weight: bold;
+            text-shadow: -2px -2px 0 rgb(208, 200, 200),  
+                         2px -2px 0 black,  
+                         -2px 2px 0 black,  
+                         2px 2px 0 black; /* Creates a border effect */
+        color: transparent;
+        font-size: 100px;
+        }
+      
+/* General Section Styling */
+#home {
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4F5B66, #687582);
+    height: 50px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.home_welcome {
+    font-weight: 500;
+    font-size: 2rem;
+    color: #586673;
+    animation: slideDown 1.2s ease-in-out;
+    letter-spacing: normal;
+}
+
+.home_welcome p {
+    font-size: 0.7em;
+    color: #616D7A;
+    margin-top: 10px;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+/* Offer Section */
+.offer-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #fff6e4be;
+    border-radius: 0px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.offer-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3d1f00;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background:#3d1f00 ;
+    color: #fff6f1;
+    border-radius: 7px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background: #ff5500;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+/* Services Section */
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything inside */
+    text-align: center;
+}
+
+/* Service Title Box */
+.section-title-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px 0px;
+    background: linear-gradient(to right, #663300, #3d1f00);
+    border-radius: 0px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Service Title */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.service-container {
+
+    display: flex; /* Align boxes side-by-side */
+    justify-content: space-around; /* Space them evenly */
+    flex-wrap: wrap; /* Wrap to the next row on smaller screens */
+    padding: 50px 100px;
+}
+
+.service-box {
+    width: 25%; /* Each box takes 25% width */
+    margin: 10px;
+    background: #fff; /* White background */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.service-box:hover {
+    transform: translateY(-10px); /* Lifts the box on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Adds a deeper shadow */
+}
+
+.service-box img {
+    width: 100%; /* Makes the image responsive */
+    height: 200px; /* Sets a fixed height */
+    object-fit: cover; /* Ensures the image doesn’t stretch */
+    border-bottom: 1px solid #ddd; /* Separates the image and content */
+}
+
+.service-box h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 15px 0;
+}
+
+.service-box p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0 10px 15px;
+}
+
+.service-box a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Inherits the text color */
+    display: block; /* Makes the entire box clickable */
+}
+body {
+    font-family: 'Arial', sans-serif; /* Default font, you can change this */
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+#train-at-home {
+    padding: 80px 0; /* Adjust padding as needed */
+    background: linear-gradient(135deg, #f8f8f8, #e6e6e6);
+    text-align: center;
+    font-family: 'Poppins', sans-serif; 
+}
+
+#train-at-home .container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#train-at-home h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#train-at-home p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.expert-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    animation: slideUp 1.5s ease-out forwards;
+}
+
+.category {
+    flex: 1 1 300px; /* Adjust width as needed */
+    text-align: center;
+}
+
+.category h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #34495e;
+    text-transform: uppercase;
+    border-bottom: 3px solid #8aa577;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.expert-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.expert {
+    flex: 1 1 180px; /* Adjust size as needed */
+    border: 1px solid #8aa577;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.expert:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.expert img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.expert h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.trusted-by {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f8f9fa;
+}
+
+.trusted-by h2 {
+    font-size: 22px;
+    color: #0d2240;
+    margin-bottom: 20px;
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logos img {
+    height: 40px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.pricing-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the card */
+    align-items: center; /* Vertically center the card */
+    min-height: 300px; /* Ensure enough height to center vertically */
+    background: linear-gradient(to bottom right, #e0f2f7, #f5f5f5); /* Light gradient background */
+    padding: 20px;
+    width: 100%;
+}
+
+.pricing-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevents content from overflowing rounded corners */
+    width: 600px; /* Adjust width as needed */
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pricing-header {
+    background-color: #f0f0f0; /* Light gray header */
+    padding: 30px;
+    justify-content: center;
+}
+
+.pricing-header h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.pricing-content {
+    padding: 30px;
+}
+
+.pricing-details {
+    display: flex;
+    flex-direction: column; /* Stack duration and cost */
+    align-items: center; /* Center horizontally */
+    margin-bottom: 20px;
+}
+
+.pricing-duration {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.pricing-cost {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.pricing-cost small {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.trial-info {
+    background-color: #673ab7; /* Example trial background color */;
+    padding: 8px 15px;
+    border-radius: 20px; /* Pill-shaped */
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color:white;
+}
+
+.pricing-description {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.pricing-description a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+.pricing-button {
+    background-color: #4285f4; /* Blue button */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.pricing-button:hover {
+    background-color: #357ae8; /* Darker blue on hover */
+}
+
+.faq-container {
+    max-width: 900px; /* Slightly wider container */
+    margin: 20px auto;
+    padding: 30px; /* Increased padding */
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+    border-radius: 10px; /* More rounded corners */
+    background: linear-gradient(to right, #e0f2f7, #f5f5f5); /* Light blue to light gray gradient */
+    padding: 40px;
+}
+
+.faq-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #6a8eb4;
+    font-family: 'Pacifico', cursive; /* Cursive font for the title */
+    font-size: 2.5em; /* Larger title size */
+    text-decoration: underline;
+   
+}
+
+.faq-group h2 {
+    color: #555;
+    margin-bottom: 15px;
+    font-family: 'Lobster', cursive;  /* Cursive font for group titles */
+    font-size: 1.8em; /* Slightly larger group title size */
+    font-weight: normal;
+}
+
+details {
+    margin-bottom: 15px;
+    border: 1px solid #ddd; /* Box around each FAQ item */
+    border-radius: 8px;
+    overflow: hidden; /* Prevents content from overflowing rounded corners */
+}
+
+summary {
+    font-weight: normal;
+    padding: 15px;
+    background-color: #f8f8f8; /* Very light gray background */
+    border-radius: 8px 8px 0 0; /* Rounded top corners only */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    list-style: none; /* Remove default marker for summary */
+    position: relative; /* For the arrow */
+}
+
+summary:hover {
+    background-color: #eee;
+}
+
+summary::after {
+    content: '\276F'; /* Unicode right arrow */
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+
+details[open] summary::after {
+    transform: translateY(-50%) rotate(90deg); /* Rotate arrow when open */
+}
+
+.faq-answer {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd; /* Add top border for visual separation */
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners only */
+}
+
+/* Add more specific styles as needed */
+
+nav {
+    position: fixed; /* Keeps the menu at the top */
+    top: 0;
+    width: 100%; /* Spans the entire width of the page */
+    background: rgba(34, 34, 34, 0.8); /* Semi-transparent black background */
+    height: 60px; /* Reduces the height of the menu */
+    z-index: 1000; /* Ensures it stays on top */
+    display: flex; /* Aligns items horizontally */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers menu items horizontally */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a slight shadow */
+}
+
+nav ul {
+    display: flex;
+    gap: 30px; /* Adds space between menu items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1rem; /* Adjusts the font size */
+    color: white; /* Sets the text color */
+    padding: 10px 15px; /* Reduces padding inside links */
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Adds a hover effect */
+    border-radius: 5px; /* Smooth rounded edges on hover */
+}
+.user-menu {
+    position: relative;
+}
+
+.user-icon i {
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.user-icon i:hover {
+    color: #ffd699;
+}
+
+/* Dropdown initially hidden */
+.user-menu .dropdown {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #222;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    min-width: 180px;
+    z-index: 1001;
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Show dropdown on hover */
+.user-menu:hover .dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dropdown links */
+.user-menu .dropdown li {
+    list-style: none;
+}
+
+.user-menu .dropdown li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+.user-menu .dropdown li a:hover {
+    background-color: #444;
+}
+#contact {
+    background-color: #fafafa ; /* Light background color */
+    padding: 40px 0; /* Padding top and bottom */
+    text-align: center; /* Center the content */
+    
+    
+}
+
+.contact-container {
+    max-width: 800px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;  /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center content horizontally */
+    gap: 20px; /* Space between the contact info and form */
+    max-width: 700px; /* Reduced width */
+    padding: 20px; /* Reduced padding */
+}
+
+#contact h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Miniver', cursive; /* Example cursive font */
+    font-size: 2em;
+    width: 100%; /* Make the heading span the full width */
+    text-align: center; /* Center the heading */
+    font-weight: normal;
+}
+
+.contact-info {
+    flex: 1 1 300px; /* Takes up 300px or 1/3 of the container */
+    text-align: left; /* Align text to the left within contact info */
+    display: block; /* Make each link a block element */
+    margin-bottom: 5px; /* Add spacing */
+}
+
+.contact-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.contact-info a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none; /* Remove underlines from links */
+}
+
+.contact-info a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.contact-form {
+    flex: 1 1 300px; /* Takes up 300px or 1/3 of the container */
+    background-color: #fff; /* White background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    text-align: left; /* Align form elements to the left */
+}
+
+.contact-form h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.contact-form button {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .contact-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .contact-info,
+    .contact-form {
+        flex: 1 1 100%; /* Take full width */
+        margin-bottom: 20px; /* Add spacing between stacked elements */
+        text-align: center; /* Center text within elements */
+    }
+}
+
+
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+section{
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+}
+
+
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    nav ul {
+        display: block;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
+
+/* AI floating */
+.ai-floating{position:fixed;right:22px;bottom:22px;z-index:1200}
+.ai-btn{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg, #a46efbe9, #f98bd4);border:none;color:#fff;font-size:20px;box-shadow:0 8px 30px rgba(16,185,129,0.18);cursor:pointer}
+.ai-panel{width:360px;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.12);overflow:hidden;margin-top:10px}
+.ai-panel.hidden{display:none}
+.ai-panel-head{background:#9355f8f6; color:#fff;display:flex;justify-content:space-between;align-items:left;padding:10px 12px;border-bottom:1px solid #f1f5f9}
+.ai-messages{max-height:240px;text-align:left;align-items:flex-start;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px;background-color: #fafafa;font-family:var(--font-sans);font-size:16px;}
+.ai-msg{padding:8px;border-radius:8px;max-width:80%;word-wrap: break-word; align-items:flex-start; font-family:var(--font-sans);}
+.ai-msg.user{align-self:flex-end;background: #eaeef8;color: #1a237e;}
+.ai-input{display:flex;padding:10px;border-top:1px solid #f1f5f9 ;background: #fff;}
+.ai-input input{flex:1;padding:8px;border-radius:8px;border:1px solid #e6eef7;margin-right:8px}
+.ai-min {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.ai-input .btn {
+  margin-left: 8px;
+  background: #9355f8f6;   /* <-- send button color */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+.ai-msg.assistant {
+  align-items: left;
+  background: #f6f1fc;    /* <-- assistant reply background */
+  color: #311b92;         /* text color */
+}
