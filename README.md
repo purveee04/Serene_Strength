@@ -241,13 +241,9 @@ Core services include error handling, input validation, CORS, and `server.js` in
 
 **Scripts:** `script.js` handles UI logic, authentication, API calls, and dynamic dashboard updates.
 
-###  License
 
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
 
-###  Contact & Support
 
-For questions, suggestions, or support, please open an **issue** or contact the maintainers via **GitHub**.
 
 Thank you for being a part of **Serene Strength**!
 
